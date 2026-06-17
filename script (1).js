@@ -1,37 +1,11 @@
-// Aguarda o carregamento do documento para registrar os eventos de clique
-document.addEventListener("DOMContentLoaded", () => {
-    const options = document.querySelectorAll('.quiz-option');
+function verificarResposta(isCorrect) {
+    const feedback = document.getElementById("resultado-feedback");
     
-    options.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const selectedButton = e.target;
-            const isCorrect = selectedButton.getAttribute('data-correct') === 'true';
-            
-            checkAnswer(selectedButton, isCorrect, options);
-        });
-    });
-});
-
-function checkAnswer(selectedButton, isCorrect, allOptions) {
-    // Desabilita todos os botões após a escolha do usuário
-    allOptions.forEach(btn => btn.disabled = true);
-
-    const feedback = document.getElementById('quiz-feedback');
-
     if (isCorrect) {
-        selectedButton.classList.add('correct');
-        feedback.innerHTML = "✅ Correto! Vozes robóticas e pedidos de dinheiro urgentes são sinais claros de Deepfakes e golpes.";
-        feedback.style.color = "var(--success)";
+        feedback.textContent = "✅ Correto! Você agiu com segurança e criticidade digital.";
+        feedback.className = "feedback correto";
     } else {
-        selectedButton.classList.add('incorrect');
-        feedback.innerHTML = "❌ Incorreto. Essa atitude pode espalhar golpes ou causar prejuízos financeiros. O correto é desconfiar e checar.";
-        feedback.style.color = "var(--danger)";
-        
-        // Destaca automaticamente a alternativa correta para fins educativos
-        allOptions.forEach(btn => {
-            if (btn.getAttribute('data-correct') === 'true') {
-                btn.classList.add('correct');
-            }
-        });
+        feedback.textContent = "❌ Atenção! Essa ação espalha a fraude ou gera prejuízo. Pense crítico!";
+        feedback.className = "feedback incorreto";
     }
 }
