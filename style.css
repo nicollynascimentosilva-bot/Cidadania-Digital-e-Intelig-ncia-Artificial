@@ -1,138 +1,254 @@
-/* Paleta de Cores e Estilo Dark Gamer */
+/* Paleta de Cores Premium - Minimalismo Luxuoso */
 :root {
-    --bg-color: #0b0f19;
-    --card-bg: #151f32;
-    --text-color: #f1f5f9;
-    --accent-color: #38bdf8;
-    --danger-color: #ef4444;
-    --success-color: #4ade80;
+    --bg-color: #060913;
+    --card-bg: rgba(15, 22, 42, 0.65);
+    --text-color: #e2e8f0;
+    --text-muted: #94a3b8;
+    --gold: #d4af37;
+    --gold-hover: #b38f1d;
+    --border-color: rgba(212, 175, 55, 0.15);
+    --danger: #f87171;
+    --success: #34d399;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Geist Sans', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
 }
 
+/* Cabeçalho de Luxo */
 header {
-    background: linear-gradient(135deg, #1e1b4b, #2e1065);
     text-align: center;
-    padding: 3rem 1rem;
-    border-bottom: 4px solid var(--accent-color);
+    padding: 6rem 1rem 4rem 1rem;
+    position: relative;
+}
+
+.header-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    background: rgba(212, 175, 55, 0.05);
 }
 
 header h1 {
-    font-size: 2.6rem;
-    color: var(--accent-color);
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
+header p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Navegação Flutuante Premium */
 nav {
     display: flex;
     justify-content: center;
-    background-color: #030712;
+    background: rgba(6, 9, 19, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
 nav a {
-    color: var(--text-color);
-    padding: 1rem 1.5rem;
+    color: var(--text-muted);
+    padding: 1.2rem 2rem;
     text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 nav a:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
+    color: #ffffff;
+    border-bottom: 2px solid var(--gold);
 }
 
+/* Container de Conteúdo */
 .container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 950px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
 }
 
+/* Cartas com Efeito de Vidro (Glassmorphism) */
 .card {
     background-color: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 16px;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 3rem;
+    border-radius: 20px;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+}
+
+.card-num {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
 }
 
 h2 {
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
+    color: #ffffff;
     font-size: 1.8rem;
+    font-weight: 700;
 }
 
-p { margin-bottom: 1rem; }
-ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
-li { margin-bottom: 0.6rem; }
+p {
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
 
-/* Layout Alternado de Imagens/Emojis */
+strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Listas Customizadas Premium */
+.premium-list, .premium-steps {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.premium-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.premium-list li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+    top: 2px;
+}
+
+.premium-steps li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.premium-steps li::before {
+    content: counter(step-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* Layout dos Emojis Flutuantes */
 .section-layout {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .section-layout.reverse { flex-direction: row-reverse; }
-.text-block { flex: 2; min-width: 280px; }
+.text-block { flex: 2; min-width: 300px; }
 
 .image-block {
     flex: 1;
-    min-width: 150px;
-    font-size: 6rem;
+    min-width: 120px;
+    font-size: 4.5rem;
     text-align: center;
     user-select: none;
-    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(214, 175, 55, 0.2));
+    animation: float 5s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.03); }
 }
 
 /* =========================================
-   ESTRUTURA COMPLETA DO JOGO 
+   SISTEMA DO TERMINAL DE JOGO (PREMIUM)
 ============================================ */
 .game-section {
-    border: 2px solid var(--accent-color);
-    text-align: center;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 30px rgba(214, 175, 55, 0.08);
+}
+
+.game-intro {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
 }
 
 .game-hud {
     display: flex;
-    justify-content: space-around;
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 1rem 0;
-    background-color: #030712;
-    padding: 0.6rem;
+    justify-content: space-between;
+    background-color: #03060f;
+    padding: 0.8rem 2rem;
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
 }
+
+.hud-value { font-size: 0.95rem; font-weight: 800; }
+.text-gold { color: var(--gold); }
+.text-red { color: var(--danger); }
 
 #game-canvas-wrapper {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
-    border: 3px solid #334155;
-    background-color: #030712;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #03050a;
 }
 
 canvas {
@@ -141,33 +257,36 @@ canvas {
     height: auto;
 }
 
-/* Botões do Painel Touch/Mouse */
+/* Botões do Layout Mobile / Desktop */
 .mobile-controls {
     display: flex;
-    background-color: #111827;
-    border-top: 2px solid #334155;
+    background-color: #050810;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .control-btn {
     flex: 1;
-    padding: 1.2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
+    padding: 1.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     border: none;
     background-color: transparent;
-    color: white;
+    color: var(--text-muted);
     cursor: pointer;
+    transition: all 0.2s ease;
 }
-.control-btn:active { background-color: #1f2937; }
+.control-btn:hover { color: #ffffff; background-color: rgba(255, 255, 255, 0.02); }
+.control-btn:active { background-color: rgba(255, 255, 255, 0.04); }
 
-/* Telas Sobrepostas */
+/* Overlays e Modais do Jogo */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(3, 7, 18, 0.9);
+    background-color: rgba(6, 9, 19, 0.96);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,39 +294,63 @@ canvas {
     z-index: 10;
 }
 
-#game-over-screen h3 {
-    color: var(--danger-color);
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
+.overlay-graphic {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    animation: pulse 2s infinite;
 }
 
-#game-over-screen p { font-size: 1.3rem; margin-bottom: 1.5rem; }
+#game-over-screen h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+#game-over-screen p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
 
 .play-btn {
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
+    padding: 0.9rem 2.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
     cursor: pointer;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
-    transition: transform 0.1s;
+    background: rgba(212, 175, 55, 0.06);
+    color: var(--gold);
+    transition: all 0.3s ease;
 }
-.play-btn:hover { transform: scale(1.04); }
+.play-btn:hover {
+    background-color: var(--gold);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(214, 175, 55, 0.3);
+}
+
+.btn-gold { background: var(--gold); color: var(--bg-color); }
 
 .hidden { display: none !important; }
 
+/* Rodapé Classudo */
 footer {
     text-align: center;
-    padding: 2.5rem;
-    background-color: #030712;
-    color: #64748b;
-    margin-top: 4rem;
+    padding: 4rem 1rem;
+    background-color: #03050a;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    margin-top: 6rem;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 @media (max-width: 600px) {
-    header h1 { font-size: 1.8rem; }
-    .card { padding: 1.5rem; }
+    header h1 { font-size: 2.2rem; }
+    .card { padding: 1.8rem; }
+    header { padding-top: 4rem; }
 }
