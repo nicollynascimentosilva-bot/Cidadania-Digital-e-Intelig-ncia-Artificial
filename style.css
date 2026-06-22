@@ -1,242 +1,134 @@
-/* Configurações Globais e Paleta Cyberpunk Soft */
-:root {
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --text-color: #f8fafc;
-    --accent-color: #38bdf8;
-    --danger-color: #ef4444;
-    --success-color: #22c55e;
+// Variáveis e Atributos de Estado do Jogo
+let awareness = 50;
+let fakeNews = 30;
+let money = 100;
+let days = 0;
+let gameOver = false;
+
+// Seleção dos elementos de exibição
+const txtAwareness = document.getElementById("stat-awareness");
+const txtFakes = document.getElementById("stat-fakes");
+const txtMoney = document.getElementById("stat-money");
+const txtDays = document.getElementById("stat-days");
+
+const cityVisual = document.getElementById("city-visual");
+const cityAlertText = document.getElementById("city-alert-text");
+
+const btnEducate = document.getElementById("btn-educate");
+const btnInvest = document.getElementById("btn-invest");
+const btnNextDay = document.getElementById("btn-next-day");
+
+const messageBox = document.getElementById("game-message-box");
+const gameTitle = document.getElementById("game-title");
+const gameDesc = document.getElementById("game-desc");
+const btnRestart = document.getElementById("btn-restart");
+
+function updateUI() {
+    // Atualiza os valores do painel
+    txtAwareness.innerText = awareness + "%";
+    txtFakes.innerText = fakeNews + "%";
+    txtMoney.innerText = money;
+    txtDays.innerText = days;
+
+    // Gerencia a ativação e bloqueio de botões por falta de dinheiro
+    btnEducate.disabled = (money < 30 || gameOver);
+    btnInvest.disabled = (money < 50 || gameOver);
+    btnNextDay.disabled = gameOver;
+
+    // Altera o aspecto visual da cidade dependendo dos problemas de desinformação
+    if (fakeNews >= 70) {
+        cityVisual.className = "city-box-danger";
+        cityAlertText.innerText = "🚨 ALERTA CRÍTICO: Deepfakes gerando tumultos e pânico nas ruas!";
+    } else if (fakeNews >= 45) {
+        cityVisual.className = "city-box-warn";
+        cityAlertText.innerText = "⚠️ ATENÇÃO: Rumores de IA e Fake News crescendo nos distritos.";
+    } else {
+        cityVisual.className = "city-box-normal";
+        cityAlertText.innerText = "Status: Cidade operando normalmente com boa internet.";
+    }
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+function handleEducate() {
+    if (money >= 30) {
+        money -= 30;
+        awareness = Math.min(awareness + 20, 100);
+        fakeNews = Math.max(fakeNews - 15, 0);
+        updateUI();
+        checkGameStatus();
+    }
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+function handleInvest() {
+    if (money >= 50) {
+        money -= 50;
+        fakeNews = Math.max(fakeNews - 35, 0);
+        awareness = Math.min(awareness + 5, 100);
+        updateUI();
+        checkGameStatus();
+    }
 }
 
-/* Cabeçalho */
-header {
-    background: linear-gradient(135deg, #1e1b4b, #311042);
-    text-align: center;
-    padding: 3rem 1rem;
-    border-bottom: 3px solid var(--accent-color);
+function handleNextDay() {
+    days += 1;
+    money += 20; // Salário diário do prefeito
+
+    // A cada amanhecer, novos bots e canais de fake news atacam a cidade de forma randômica
+    let attackValue = Math.floor(Math.random() * 15) + 10; 
+    fakeNews = Math.min(fakeNews + attackValue, 100);
+
+    // Se o povo não for consciente, o ataque de fake news é maior
+    if (awareness < 40) {
+        fakeNews = Math.min(fakeNews + 10, 100);
+    } else {
+        awareness = Math.max(awareness - 5, 0); // Declínio natural da atenção diária
+    }
+
+    updateUI();
+    checkGameStatus();
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent-color);
+function checkGameStatus() {
+    // Condição de Derrota: Se a desinformação atingir o teto de 100%
+    if (fakeNews >= 100) {
+        endGame(false, "A desinformação atingiu 100%! O caos imperou, os serviços públicos caíram devido a golpes de IA e você foi destituído do cargo.");
+    } 
+    // Condição de Vitória: Sobreviver 15 dias com o nível de fake news controlado
+    else if (days >= 15 && fakeNews <= 20) {
+        endGame(true, "Vitória Brilhante! Você governou por 15 dias protegendo os cidadãos contra as fake news e criou uma utopia de cidadania digital legítima.");
+    }
 }
 
-/* Navegação */
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #020617;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+function endGame(isVictory, text) {
+    gameOver = true;
+    updateUI();
+    messageBox.classList.remove("hidden");
+    
+    if (isVictory) {
+        gameTitle.innerText = "🏆 Cidade Salva!";
+        messageBox.className = "win-style";
+    } else {
+        gameTitle.innerText = "❌ Colapso Digital!";
+        messageBox.className = "lose-style";
+    }
+    gameDesc.innerText = text;
 }
 
-nav a {
-    color: var(--text-color);
-    padding: 1rem 1.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+function resetGame() {
+    awareness = 50;
+    fakeNews = 30;
+    money = 100;
+    days = 0;
+    gameOver = false;
+    messageBox.classList.add("hidden");
+    updateUI();
 }
 
-nav a:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
-
-/* Layout Principal */
-.container {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-h2 {
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-}
-
-p {
-    margin-bottom: 1rem;
-}
-
-ul, ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-li {
-    margin-bottom: 0.5rem;
-}
-
-/* Flexbox para Seções com Imagens */
-.content-flex {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.content-flex.reverse {
-    flex-direction: row-reverse;
-}
-
-.text-block {
-    flex: 1;
-    min-width: 280px;
-}
-
-.img-block {
-    flex: 1;
-    min-width: 280px;
-    text-align: center;
-}
-
-.img-block img {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid #475569;
-}
-
-/* =========================================
-   ÁREA EXCLUSIVA DO JOGO DAS IMAGENS 
-============================================ */
-.game-section {
-    border: 2px solid var(--accent-color);
-    text-align: center;
-}
-
-/* Moldura da imagem do jogo */
-.game-image-box {
-    width: 100%;
-    max-width: 500px;
-    height: 320px;
-    margin: 1.5rem auto;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 4px solid #334155;
-    background-color: #020617;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-.game-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.game-image-box img:hover {
-    transform: scale(1.03);
-}
-
-#question-box {
-    background-color: #0f172a;
-    padding: 1.2rem;
-    border-radius: 8px;
-    margin: 1rem auto;
-    max-width: 600px;
-    font-size: 1.1rem;
-    border-left: 4px solid var(--accent-color);
-}
-
-.game-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-}
-
-.btn {
-    padding: 1rem 1.8rem;
-    font-size: 1.05rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.1s, filter 0.2s;
-}
-
-.btn:active {
-    transform: scale(0.96);
-}
-
-.btn-fake { background-color: var(--danger-color); color: white; }
-.btn-fake:hover { filter: brightness(1.2); }
-
-.btn-fact { background-color: var(--success-color); color: white; }
-.btn-fact:hover { filter: brightness(1.2); }
-
-#feedback {
-    padding: 1.2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    max-width: 600px;
-    margin: 1rem auto;
-    animation: fadeIn 0.4s ease;
-}
-
-.correct { background-color: rgba(34, 197, 94, 0.25); border: 2px solid var(--success-color); color: #4ade80; }
-.incorrect { background-color: rgba(239, 68, 68, 0.25); border: 2px solid var(--danger-color); color: #f87171; }
-
-.hidden { display: none !important; }
-
-.btn-restart {
-    padding: 0.8rem 2.5rem;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    font-size: 1.1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 1.5rem;
-    transition: background-color 0.2s;
-}
-.btn-restart:hover { background-color: #7dd3fc; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Rodapé */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: #020617;
-    color: #64748b;
-    margin-top: 4rem;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    header h1 { font-size: 1.8rem; }
-    .game-buttons { flex-direction: column; gap: 1rem; padding: 0 1rem; }
-    .game-image-box { height: 220px; }
-}
+// Vincula as funções lógicas de escuta aos cliques do usuário
+document.addEventListener("DOMContentLoaded", () => {
+    btnEducate.addEventListener("click", handleEducate);
+    btnInvest.addEventListener("click", handleInvest);
+    btnNextDay.addEventListener("click", handleNextDay);
+    btnRestart.addEventListener("click", resetGame);
+    
+    updateUI(); // Inicia com os status zerados padrão
+});
