@@ -1,21 +1,100 @@
-<button onclick="modoEscuro()">🌙 Modo Escuro</button><section>
-    <h2>Detector de Fake News</h2>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidadania Digital & IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cidadania Digital na Era da IA</h1>
+        <p>O Impacto das Deepfakes e da Desinformação na Sociedade</p>
+    </header>
 
-    <input type="text" id="noticia"
-    placeholder="Digite uma notícia">
+    <nav>
+        <a href="#conceito">Conceito</a>
+        <a href="#impactos">Impactos</a>
+        <a href="#jogo">Desafio Fake vs Fato</a>
+        <a href="#prevencao">Como se Proteger</a>
+    </nav>
 
-    <button onclick="analisar()">
-        Analisar
-    </button>
+    <main class="container">
+        <!-- Seção Conceito -->
+        <section id="conceito" class="card">
+            <h2>O que é Cidadania Digital e Inteligência Artificial?</h2>
+            <div class="content-flex">
+                <div class="text-block">
+                    <p>A <strong>cidadania digital</strong> representa nossa capacidade de usar a tecnologia de forma responsável, crítica e ética. Com o avanço da <strong>Inteligência Artificial (IA)</strong>, essa missão tornou-se mais complexa.</p>
+                    <p>Ferramentas de IA agora permitem a criação de <em>deepfakes</em> — vídeos, áudios ou imagens hiper-realistas que imitam pessoas reais dizendo ou fazendo coisas que nunca aconteceram.</p>
+                </div>
+                <div class="img-block">
+                    <!-- Imagem conceitual sobre conexões digitais e IA -->
+                    <img src="https://unsplash.com" alt="Abstrato de Inteligência Artificial">
+                </div>
+            </div>
+        </section>
 
-    <p id="resultado"></p>
-</section><section>
-<h2>Galeria</h2>
+        <!-- Seção Impactos -->
+        <section id="impactos" class="card">
+            <h2>Os Perigos das Deepfakes e da Desinformação</h2>
+            <p>A disseminação em massa de conteúdos manipulados gera severas consequências no mundo real:</p>
+            <ul>
+                <li><strong>Fraudes Financeiras:</strong> Clonagem de voz por IA para aplicar golpes em familiares.</li>
+                <li><strong>Interferência Política:</strong> Criação de discursos falsos para manipular eleições de líderes.</li>
+                <li><strong>Danos à Reputação:</strong> Difamação de indivíduos comuns e figuras públicas através de vídeos adulterados.</li>
+                <li><strong>Crise de Confiança:</strong> Dificuldade generalizada em distinguir o que é real do que é fabricado.</li>
+            </ul>
+        </section>
 
-<div class="galeria">
-<img src="imagens/ia.jpg">
-<img src="imagens/deepfake.jpg">
-<img src="imagens/fake-news.jpg">
-</div>
+        <!-- Seção Jogo / Quiz Interativo -->
+        <section id="jogo" class="card game-section">
+            <h2>🎮 Jogo: Desafio Fake ou Fato?</h2>
+            <p>Treine seus olhos e sua mente crítica. Analise as situações abaixo e decida se o conteúdo é real ou fruto de manipulação!</p>
+            
+            <div id="quiz-container">
+                <div id="question-box">
+                    <p id="question-text">Carregando pergunta...</p>
+                </div>
+                <div class="game-buttons">
+                    <button class="btn btn-fake" onclick="checkAnswer(true)">É Fake! ❌</button>
+                    <button class="btn btn-fact" onclick="checkAnswer(false)">É Fato!  </button>
+                </div>
+                <div id="feedback" class="hidden"></div>
+            </div>
+            
+            <div id="score-box" class="hidden">
+                <h3>Fim do Desafio!</h3>
+                <p id="score-text"></p>
+                <button class="btn-restart" onclick="restartGame()">Jogar Novamente</button>
+            </div>
+        </section>
 
-</section>
+        <!-- Seção Prevenção -->
+        <section id="prevencao" class="card">
+            <h2>Como Praticar a Cidadania Digital</h2>
+            <div class="content-flex reverse">
+                <div class="text-block">
+                    <p>Combater a desinformação exige uma postura ativa de cada internauta:</p>
+                    <ol>
+                        <li><strong>Desconfie do imediato:</strong> Notícias alarmantes ou vídeos absurdos exigem cautela secundária.</li>
+                        <li><strong>Cheque as fontes:</strong> Busque o mesmo fato em portais jornalísticos consolidados.</li>
+                        <li><strong>Analise os detalhes:</strong> Em deepfakes, observe piscadas não naturais, falhas na iluminação ou áudio dessincronizado.</li>
+                        <li><strong>Não compartilhe na dúvida:</strong> Quebre o ciclo de propagação do vírus da mentira.</li>
+                    </ol>
+                </div>
+                <div class="img-block">
+                    <!-- Imagem simbolizando verificação de dados e segurança -->
+                    <img src="https://unsplash.com" alt="Segurança Digital e Análise de Dados">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Guia de Sobrevivência na Era da IA. Desenvolvido para a conscientização digital.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
