@@ -1,213 +1,190 @@
-/* Paleta de Cores e Estilo Dark Gamer */
-:root {
-    --bg-color: #0b0f19;
-    --card-bg: #151f32;
-    --text-color: #f1f5f9;
-    --accent-color: #38bdf8;
-    --danger-color: #ef4444;
-    --success-color: #4ade80;
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+// Captura de Interface Interna
+const startScreen = document.getElementById("start-screen");
+const gameOverScreen = document.getElementById("game-over-screen");
+const finalScoreText = document.getElementById("final-score-text");
+const scoreDisplay = document.getElementById("score-display");
+const livesDisplay = document.getElementById("lives-display");
+
+const btnStart = document.getElementById("btn-start");
+const btnRestart = document.getElementById("btn-restart");
+const btnLeft = document.getElementById("btn-left");
+const btnRight = document.getElementById("btn-right");
+
+// Parâmetros da Engine
+let score = 0;
+let totalVitals = 100; // Sistema baseado em porcentagem de integridade (Premium)
+let isGameRunning = false;
+let loopId;
+let items = [];
+let spawnTimer = 0;
+
+// Elemento Controlado (Cesta Minimalista de Linha Fina)
+const basket = {
+    x: 310,
+    y: 360,
+    width: 80,
+    height: 6,
+    speed: 16,
+    color: "#d4af37" // Cor dourada corporativa
+};
+
+let keys = { ArrowLeft: false, ArrowRight: false };
+
+// Classe Construtora dos Blocos de Mídia Sintética
+class FallItem {
+    constructor() {
+        this.x = Math.random() * (canvas.width - 40) + 20;
+        this.y = -20;
+        this.width = 55;
+        this.height = 18;
+        this.speed = Math.random() * 1.5 + 2.5 + (score * 0.005);
+        
+        this.isFake = Math.random() < 0.55;
+        this.color = this.isFake ? "#f87171" : "#34d399";
+        this.label = this.isFake ? "SYNTH" : "DATA";
+    }
+
+    draw() {
+        // Design Premium: Bordas finas geométricas sem preenchimento pesado
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
+
+        // Sub-linha de brilho sutil
+        ctx.fillStyle = this.color;
+        ctx.font = "bold 8px system-ui";
+        ctx.textAlign = "center";
+        ctx.fillText(this.label, this.x + this.width / 2, this.y + 12);
+    }
+
+    update() {
+        this.y += this.speed;
+    }
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Grid de linhas de fundo sutis (estética de terminal financeiro/tecnológico)
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
+    ctx.lineWidth = 1;
+    for(let i = 50; i < canvas.width; i += 50) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+    }
+
+    // Movimentação da Cesta
+    if (keys.ArrowLeft && basket.x > 0) basket.x -= basket.speed;
+    if (keys.ArrowRight && basket.x < canvas.width - basket.width) basket.x += basket.speed;
+
+    // Renderização do Cesto (Traço Premium)
+    ctx.fillStyle = basket.color;
+    ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+    
+    // Brilho sob o cesto
+    ctx.fillStyle = "rgba(214, 175, 55, 0.15)";
+    ctx.fillRect(basket.x - 4, basket.y + basket.height, basket.width + 8, 2);
+
+    // Geração de fluxos
+    spawnTimer++;
+    if (spawnTimer >= 40) {
+        items.push(new FallItem());
+        spawnTimer = 0;
+    }
+
+    // Varredura de colisões
+    for (let i = items.length - 1; i >= 0; i--) {
+        items[i].update();
+        items[i].draw();
+
+        // Verificação Matemática de Coleta
+        if (
+            items[i].y + items[i].height >= basket.y &&
+            items[i].y <= basket.y + basket.height &&
+            items[i].x + items[i].width >= basket.x &&
+            items[i].x <= basket.x + basket.width
+        ) {
+            if (items[i].isFake) {
+                // Penalidade
+                totalVitals -= 25;
+                if(totalVitals <= 0) {
+                    totalVitals = 0;
+                    livesDisplay.innerText = "CRÍTICO";
+                    endGame();
+                    return;
+                }
+                livesDisplay.innerText = totalVitals + "%";
+            } else {
+                // Progresso
+                score += 5;
+                scoreDisplay.innerText = score + "%";
+            }
+            items.splice(i, 1);
+            continue;
+        }
+
+        // Remover se sair do escopo
+        if (items[i].y > canvas.height) {
+            items.splice(i, 1);
+        }
+    }
+
+    if (isGameRunning) {
+        loopId = requestAnimationFrame(updateGame);
+    }
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+function startGame() {
+    score = 0;
+    totalVitals = 100;
+    items = [];
+    spawnTimer = 0;
+    basket.x = 310;
+    
+    scoreDisplay.innerText = "0%";
+    livesDisplay.innerText = "100%";
+    livesDisplay.className = "hud-value text-gold";
+
+    startScreen.classList.add("hidden");
+    gameOverScreen.classList.add("hidden");
+    isGameRunning = true;
+
+    updateGame();
 }
 
-header {
-    background: linear-gradient(135deg, #1e1b4b, #2e1065);
-    text-align: center;
-    padding: 3rem 1rem;
-    border-bottom: 4px solid var(--accent-color);
+function endGame() {
+    isGameRunning = false;
+    cancelAnimationFrame(loopId);
+    livesDisplay.className = "hud-value text-red";
+    finalScoreText.innerText = `Nível de Consciência Digital Retido: ${score}%`;
+    gameOverScreen.classList.remove("hidden");
 }
 
-header h1 {
-    font-size: 2.6rem;
-    color: var(--accent-color);
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
-}
+// Escutas de Teclado Ativas
+window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        e.preventDefault();
+        keys[e.key] = true;
+    }
+});
+window.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        keys[e.key] = false;
+    }
+});
 
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #030712;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+// Vinculação de Botões Auxiliares
+btnLeft.addEventListener("mousedown", () => { keys.ArrowLeft = true; });
+btnLeft.addEventListener("mouseup", () => { keys.ArrowLeft = false; });
+btnLeft.addEventListener("touchstart", (e) => { e.preventDefault(); keys.ArrowLeft = true; });
+btnLeft.addEventListener("touchend", () => { keys.ArrowLeft = false; });
 
-nav a {
-    color: var(--text-color);
-    padding: 1rem 1.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
-}
+btnRight.addEventListener("mousedown", () => { keys.ArrowRight = true; });
+btnRight.addEventListener("mouseup", () => { keys.ArrowRight = false; });
+btnRight.addEventListener("touchstart", (e) => { e.preventDefault(); keys.ArrowRight = true; });
+btnRight.addEventListener("touchend", () => { keys.ArrowRight = false; });
 
-nav a:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
-
-.container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.card {
-    background-color: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 16px;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-h2 {
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-}
-
-p { margin-bottom: 1rem; }
-ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
-li { margin-bottom: 0.6rem; }
-
-/* Layout Alternado de Imagens/Emojis */
-.section-layout {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.section-layout.reverse { flex-direction: row-reverse; }
-.text-block { flex: 2; min-width: 280px; }
-
-.image-block {
-    flex: 1;
-    min-width: 150px;
-    font-size: 6rem;
-    text-align: center;
-    user-select: none;
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* =========================================
-   ESTRUTURA COMPLETA DO JOGO 
-============================================ */
-.game-section {
-    border: 2px solid var(--accent-color);
-    text-align: center;
-}
-
-.game-hud {
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 1rem 0;
-    background-color: #030712;
-    padding: 0.6rem;
-    border-radius: 8px;
-}
-
-#game-canvas-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 3px solid #334155;
-    background-color: #030712;
-}
-
-canvas {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-/* Botões do Painel Touch/Mouse */
-.mobile-controls {
-    display: flex;
-    background-color: #111827;
-    border-top: 2px solid #334155;
-}
-
-.control-btn {
-    flex: 1;
-    padding: 1.2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-}
-.control-btn:active { background-color: #1f2937; }
-
-/* Telas Sobrepostas */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(3, 7, 18, 0.9);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-}
-
-#game-over-screen h3 {
-    color: var(--danger-color);
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-}
-
-#game-over-screen p { font-size: 1.3rem; margin-bottom: 1.5rem; }
-
-.play-btn {
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
-    transition: transform 0.1s;
-}
-.play-btn:hover { transform: scale(1.04); }
-
-.hidden { display: none !important; }
-
-footer {
-    text-align: center;
-    padding: 2.5rem;
-    background-color: #030712;
-    color: #64748b;
-    margin-top: 4rem;
-}
-
-@media (max-width: 600px) {
-    header h1 { font-size: 1.8rem; }
-    .card { padding: 1.5rem; }
-}
+btnStart.addEventListener("click", startGame);
+btnRestart.addEventListener("click", startGame);
