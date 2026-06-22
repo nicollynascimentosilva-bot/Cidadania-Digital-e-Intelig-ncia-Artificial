@@ -122,72 +122,107 @@ li {
     border: 2px solid #475569;
 }
 
-/* Estilos do Jogo (Quiz) */
+/* =========================================
+   ÁREA EXCLUSIVA DO JOGO DAS IMAGENS 
+============================================ */
 .game-section {
     border: 2px solid var(--accent-color);
     text-align: center;
 }
 
+/* Moldura da imagem do jogo */
+.game-image-box {
+    width: 100%;
+    max-width: 500px;
+    height: 320px;
+    margin: 1.5rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid #334155;
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.game-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.game-image-box img:hover {
+    transform: scale(1.03);
+}
+
 #question-box {
     background-color: #0f172a;
-    padding: 1.5rem;
+    padding: 1.2rem;
     border-radius: 8px;
-    margin: 1.5rem 0;
-    font-size: 1.2rem;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 1rem auto;
+    max-width: 600px;
+    font-size: 1.1rem;
+    border-left: 4px solid var(--accent-color);
 }
 
 .game-buttons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .btn {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+    padding: 1rem 1.8rem;
+    font-size: 1.05rem;
     font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.1s, filter 0.2s;
 }
 
 .btn:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 .btn-fake { background-color: var(--danger-color); color: white; }
-.btn-fake:hover { background-color: #dc2626; }
+.btn-fake:hover { filter: brightness(1.2); }
 
 .btn-fact { background-color: var(--success-color); color: white; }
-.btn-fact:hover { background-color: #16a34a; }
+.btn-fact:hover { filter: brightness(1.2); }
 
 #feedback {
-    padding: 1rem;
-    border-radius: 6px;
-    font-weight: bold;
-    margin-top: 1rem;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    max-width: 600px;
+    margin: 1rem auto;
+    animation: fadeIn 0.4s ease;
 }
 
-.correct { background-color: rgba(34, 197, 94, 0.2); border: 1px solid var(--success-color); }
-.incorrect { background-color: rgba(239, 68, 68, 0.2); border: 1px solid var(--danger-color); }
+.correct { background-color: rgba(34, 197, 94, 0.25); border: 2px solid var(--success-color); color: #4ade80; }
+.incorrect { background-color: rgba(239, 68, 68, 0.25); border: 2px solid var(--danger-color); color: #f87171; }
 
 .hidden { display: none !important; }
 
 .btn-restart {
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 2.5rem;
     background-color: var(--accent-color);
     color: var(--bg-color);
+    font-size: 1.1rem;
     font-weight: bold;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    transition: background-color 0.2s;
+}
+.btn-restart:hover { background-color: #7dd3fc; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Rodapé */
@@ -202,5 +237,6 @@ footer {
 /* Responsividade */
 @media (max-width: 600px) {
     header h1 { font-size: 1.8rem; }
-    .game-buttons { flex-direction: column; gap: 1rem; }
+    .game-buttons { flex-direction: column; gap: 1rem; padding: 0 1rem; }
+    .game-image-box { height: 220px; }
 }
