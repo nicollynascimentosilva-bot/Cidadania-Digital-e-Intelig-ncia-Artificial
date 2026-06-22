@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital & IA: Simulador de Cidade</title>
+    <title>Cidadania Digital & IA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
     <nav>
         <a href="#conceito">Conceito</a>
         <a href="#impactos">Impactos</a>
-        <a href="#jogo">Simulador de Cidade Digital</a>
+        <a href="#jogo">Jogo: Defensor Digital</a>
         <a href="#prevencao">Como se Proteger</a>
     </nav>
 
@@ -23,82 +23,81 @@
         <!-- Seção Conceito -->
         <section id="conceito" class="card">
             <h2>O que é Cidadania Digital e Inteligência Artificial?</h2>
-            <p>A <strong>cidadania digital</strong> representa nossa capacidade de usar a tecnologia de forma responsável, crítica e ética. Com o avanço da <strong>Inteligência Artificial (IA)</strong>, essa missão tornou-se mais complexa.</p>
-            <p>Ferramentas de IA agora permitem a criação de <em>deepfakes</em> — vídeos, áudios ou imagens hiper-realistas que imitam pessoas reais dizendo ou fazendo coisas que nunca aconteceram.</p>
+            <div class="section-layout">
+                <div class="text-block">
+                    <p>A <strong>cidadania digital</strong> representa nossa capacidade de usar a tecnologia de forma responsável, crítica e ética. Com o avanço da <strong>Inteligência Artificial (IA)</strong>, essa missão tornou-se mais complexa.</p>
+                    <p>Ferramentas de IA agora permitem a criação de <em>deepfakes</em> — vídeos, áudios ou imagens hiper-realistas que imitam pessoas reais dizendo ou fazendo coisas que nunca aconteceram.</p>
+                </div>
+                <div class="image-block">🤖</div>
+            </div>
         </section>
 
         <!-- Seção Impactos -->
         <section id="impactos" class="card">
             <h2>Os Perigos das Deepfakes e da Desinformação</h2>
-            <p>A disseminação em massa de conteúdos manipulados gera severas consequências no mundo real:</p>
-            <ul>
-                <li><strong>Fraudes Financeiras:</strong> Clonagem de voz por IA para aplicar golpes em familiares.</li>
-                <li><strong>Interferência Política:</strong> Criação de discursos falsos para manipular eleições de líderes.</li>
-                <li><strong>Danos à Reputação:</strong> Difamação de indivíduos comuns e figuras públicas através de vídeos adulterados.</li>
-                <li><strong>Crise de Confiança:</strong> Dificuldade generalizada em distinguir o que é real do que é fabricado.</li>
-            </ul>
+            <div class="section-layout reverse">
+                <div class="text-block">
+                    <p>A disseminação em massa de conteúdos manipulados gera severas consequências no mundo real:</p>
+                    <ul>
+                        <li><strong>Fraudes Financeiras:</strong> Clonagem de voz por IA para aplicar golpes em familiares.</li>
+                        <li><strong>Interferência Política:</strong> Criação de discursos falsos para manipular eleições de líderes.</li>
+                        <li><strong>Danos à Reputação:</strong> Difamação de indivíduos comuns e figuras públicas através de vídeos adulterados.</li>
+                        <li><strong>Crise de Confiança:</strong> Dificuldade generalizada em distinguir o que é real do que é fabricado.</li>
+                    </ul>
+                </div>
+                <div class="image-block">🔥</div>
+            </div>
         </section>
 
-        <!-- Seção do Jogo: Simulador de Cidade -->
+        <!-- Seção do Jogo Interativo -->
         <section id="jogo" class="card game-section">
-            <h2>🏙️ Simulador: Cidadania Digital City</h2>
-            <p>Você é o prefeito digital! Gerencie os recursos da cidade para combater os ataques de IA. Use os botões de ação antes que o tempo acabe e a desinformação domine a população.</p>
+            <h2>🎮 Jogo: Defensor da Cidadania Digital</h2>
+            <p>Mova a **Cesta da Verdade** com as **setas do teclado (Esquerda / Direita)** ou **clique/toque nos botões da tela**. Colete os **Fatos (Verdes)** e desvie dos **Ataques de IA / Fakes (Vermelhos)**!</p>
             
-            <!-- Painel de Status da Cidade -->
-            <div class="city-dashboard">
-                <div class="status-tile">
-                    <span class="status-icon">💡</span>
-                    <span class="status-label">Consciência</span>
-                    <span id="stat-awareness" class="status-value">50%</span>
-                </div>
-                <div class="status-tile">
-                    <span class="status-icon">⚠️</span>
-                    <span class="status-label">Desinformação</span>
-                    <span id="stat-fakes" class="status-value">30%</span>
-                </div>
-                <div class="status-tile">
-                    <span class="status-icon">🪙</span>
-                    <span class="status-label">Créditos de IA</span>
-                    <span id="stat-money" class="status-value">100</span>
-                </div>
-                <div class="status-tile">
-                    <span class="status-icon">⏱️</span>
-                    <span class="status-label">Dias no Cargo</span>
-                    <span id="stat-days" class="status-value">0</span>
-                </div>
+            <!-- Placar do Jogo -->
+            <div class="game-hud">
+                <div>❤️ Vidas: <span id="lives-display">3</span></div>
+                <div>🏆 Pontos: <span id="score-display">0</span></div>
             </div>
 
-            <!-- Visual da Cidade (Muda de cor baseado no status) -->
-            <div id="city-visual" class="city-box-normal">
-                <div class="city-skyline">🏢 🏣 🏥 🏪 🏛️ 🏬</div>
-                <p id="city-alert-text">Status: Cidade operando normalmente.</p>
-            </div>
+            <!-- Área do Jogo -->
+            <div id="game-canvas-wrapper">
+                <canvas id="gameCanvas" width="600" height="400"></canvas>
+                
+                <!-- Botões para Celular/Mouse -->
+                <div class="mobile-controls">
+                    <button id="btn-left" class="control-btn">◀️ Esquerda</button>
+                    <button id="btn-right" class="control-btn">Direita ▶️</button>
+                </div>
 
-            <!-- Botões de Ações do Prefeito -->
-            <div class="game-actions">
-                <button id="btn-educate" class="action-btn">📚 Educar População (Custo: 30)</button>
-                <button id="btn-invest" class="action-btn">🛡️ Filtros Antifake por IA (Custo: 50)</button>
-                <button id="btn-next-day" class="action-btn next-btn">⏭️ Avançar Dia (+20 Moedas)</button>
-            </div>
+                <!-- Telas de Interface -->
+                <div id="start-screen" class="overlay">
+                    <button id="btn-start" class="play-btn">Iniciar Defesa 🚀</button>
+                </div>
 
-            <!-- Telas de Fim de Jogo -->
-            <div id="game-message-box" class="hidden">
-                <h3 id="game-title">Fim de Jogo</h3>
-                <p id="game-desc"></p>
-                <button id="btn-restart" class="restart-btn">Reiniciar Cidade</button>
+                <div id="game-over-screen" class="overlay hidden">
+                    <h3>⚠️ A Desinformação Venceu!</h3>
+                    <p id="final-score-text">Pontuação: 0</p>
+                    <button id="btn-restart" class="play-btn">Tentar Novamente</button>
+                </div>
             </div>
         </section>
 
         <!-- Seção Prevenção -->
         <section id="prevencao" class="card">
             <h2>Como Praticar a Cidadania Digital</h2>
-            <p>Combater a desinformação exige uma postura ativa de cada internauta:</p>
-            <ol>
-                <li><strong>Desconfie do imediato:</strong> Notícias alarmantes ou vídeos absurdos exigem cautela.</li>
-                <li><strong>Cheque as fontes:</strong> Busque o mesmo fato em portais jornalísticos consolidados.</li>
-                <li><strong>Analise os detalhes:</strong> Em imagens de IA, observe dentes estranhos, mãos com 6 dedos ou fundos distorcidos.</li>
-                <li><strong>Não compartilhe na dúvida:</strong> Quebre o ciclo de propagação do vírus da mentira.</li>
-            </ol>
+            <div class="section-layout">
+                <div class="text-block">
+                    <p>Combater a desinformação exige uma postura ativa de cada internauta:</p>
+                    <ol>
+                        <li><strong>Desconfie do imediato:</strong> Notícias alarmantes ou vídeos absurdos exigem cautela secundária.</li>
+                        <li><strong>Cheque as fontes:</strong> Busque o mesmo fato em portais jornalísticos consolidados.</li>
+                        <li><strong>Analise os detalhes:</strong> Em imagens de IA, observe dentes estranhos, mãos com muitos dedos ou fundos distorcidos.</li>
+                        <li><strong>Não compartilhe na dúvida:</strong> Quebre o ciclo de propagação do vírus da mentira.</li>
+                    </ol>
+                </div>
+                <div class="image-block">🛡️</div>
+            </div>
         </section>
     </main>
 
