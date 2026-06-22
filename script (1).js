@@ -15,7 +15,7 @@ const btnRight = document.getElementById("btn-right");
 
 // Parâmetros da Engine
 let score = 0;
-let totalVitals = 100; // Sistema baseado em porcentagem de integridade (Premium)
+let totalVitals = 100;
 let isGameRunning = false;
 let loopId;
 let items = [];
@@ -25,10 +25,10 @@ let spawnTimer = 0;
 const basket = {
     x: 310,
     y: 360,
-    width: 80,
+    width: 85,
     height: 6,
-    speed: 16,
-    color: "#d4af37" // Cor dourada corporativa
+    speed: 15,
+    color: "#d4af37"
 };
 
 let keys = { ArrowLeft: false, ArrowRight: false };
@@ -36,11 +36,14 @@ let keys = { ArrowLeft: false, ArrowRight: false };
 // Classe Construtora dos Blocos de Mídia Sintética
 class FallItem {
     constructor() {
-        this.x = Math.random() * (canvas.width - 40) + 20;
+        this.x = Math.random() * (canvas.width - 60) + 30;
         this.y = -20;
-        this.width = 55;
+        this.width = 60;
         this.height = 18;
-        this.speed = Math.random() * 1.5 + 2.5 + (score * 0.005);
+        
+        // Dificuldade Progressiva linear e oscilação lateral suave
+        this.speedY = Math.random() * 1.2 + 2.5 + (score * 0.006);
+        this.driftX = (Math.random() - 0.5) * 0.8;
         
         this.isFake = Math.random() < 0.55;
         this.color = this.isFake ? "#f87171" : "#34d399";
@@ -48,12 +51,10 @@ class FallItem {
     }
 
     draw() {
-        // Design Premium: Bordas finas geométricas sem preenchimento pesado
         ctx.strokeStyle = this.color;
         ctx.lineWidth = 1.5;
         ctx.strokeRect(this.x, this.y, this.width, this.height);
 
-        // Sub-linha de brilho sutil
         ctx.fillStyle = this.color;
         ctx.font = "bold 8px system-ui";
         ctx.textAlign = "center";
@@ -61,45 +62,51 @@ class FallItem {
     }
 
     update() {
-        this.y += this.speed;
+        this.y += this.speedY;
+        this.x += this.driftX;
+        
+        // Colisão com as paredes laterais invisíveis para manter o bloco na tela
+        if (this.x < 0 || this.x + this.width > canvas.width) {
+            this.driftX *= -1;
+        }
     }
 }
 
 function updateGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Grid de linhas de fundo sutis (estética de terminal financeiro/tecnológico)
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
+    // Grid de linhas digitais sutis ao fundo (Visual Premium)
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.015)";
     ctx.lineWidth = 1;
     for(let i = 50; i < canvas.width; i += 50) {
         ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
     }
 
-    // Movimentação da Cesta
+    // Movimentação do Escudo por Teclado
     if (keys.ArrowLeft && basket.x > 0) basket.x -= basket.speed;
     if (keys.ArrowRight && basket.x < canvas.width - basket.width) basket.x += basket.speed;
 
-    // Renderização do Cesto (Traço Premium)
+    // Renderização do Cesto
     ctx.fillStyle = basket.color;
     ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
     
-    // Brilho sob o cesto
-    ctx.fillStyle = "rgba(214, 175, 55, 0.15)";
+    ctx.fillStyle = "rgba(214, 175, 55, 0.12)";
     ctx.fillRect(basket.x - 4, basket.y + basket.height, basket.width + 8, 2);
 
-    // Geração de fluxos
+    // Controle de Spawn Inteligente baseado no Score
     spawnTimer++;
-    if (spawnTimer >= 40) {
+    let spawnRate = Math.max(25, 42 - Math.floor(score * 0.1));
+    if (spawnTimer >= spawnRate) {
         items.push(new FallItem());
         spawnTimer = 0;
     }
 
-    // Varredura de colisões
+    // Processamento dos Itens Ativos
     for (let i = items.length - 1; i >= 0; i--) {
         items[i].update();
         items[i].draw();
 
-        // Verificação Matemática de Coleta
+        // Verificação de Coleta Avançada
         if (
             items[i].y + items[i].height >= basket.y &&
             items[i].y <= basket.y + basket.height &&
@@ -107,7 +114,6 @@ function updateGame() {
             items[i].x <= basket.x + basket.width
         ) {
             if (items[i].isFake) {
-                // Penalidade
                 totalVitals -= 25;
                 if(totalVitals <= 0) {
                     totalVitals = 0;
@@ -117,7 +123,6 @@ function updateGame() {
                 }
                 livesDisplay.innerText = totalVitals + "%";
             } else {
-                // Progresso
                 score += 5;
                 scoreDisplay.innerText = score + "%";
             }
@@ -125,8 +130,16 @@ function updateGame() {
             continue;
         }
 
-        // Remover se sair do escopo
         if (items[i].y > canvas.height) {
+            // Se deixar de pegar um dado real (DATA), há uma pequena perda de integridade
+            if (!items[i].isFake) {
+                totalVitals = Math.max(0, totalVitals - 5);
+                livesDisplay.innerText = totalVitals + "%";
+                if (totalVitals <= 0) {
+                    endGame();
+                    return;
+                }
+            }
             items.splice(i, 1);
         }
     }
@@ -158,6 +171,7 @@ function endGame() {
     isGameRunning = false;
     cancelAnimationFrame(loopId);
     livesDisplay.className = "hud-value text-red";
+    livesDisplay.innerText = "CRÍTICO";
     finalScoreText.innerText = `Nível de Consciência Digital Retido: ${score}%`;
     gameOverScreen.classList.remove("hidden");
 }
@@ -175,16 +189,21 @@ window.addEventListener("keyup", (e) => {
     }
 });
 
-// Vinculação de Botões Auxiliares
-btnLeft.addEventListener("mousedown", () => { keys.ArrowLeft = true; });
-btnLeft.addEventListener("mouseup", () => { keys.ArrowLeft = false; });
-btnLeft.addEventListener("touchstart", (e) => { e.preventDefault(); keys.ArrowLeft = true; });
-btnLeft.addEventListener("touchend", () => { keys.ArrowLeft = false; });
+// Suporte e Mapeamento para Cliques de Botão (Mobile e Mouse)
+const setLeft = (state) => { keys.ArrowLeft = state; };
+const setRight = (state) => { keys.ArrowRight = state; };
 
-btnRight.addEventListener("mousedown", () => { keys.ArrowRight = true; });
-btnRight.addEventListener("mouseup", () => { keys.ArrowRight = false; });
-btnRight.addEventListener("touchstart", (e) => { e.preventDefault(); keys.ArrowRight = true; });
-btnRight.addEventListener("touchend", () => { keys.ArrowRight = false; });
+btnLeft.addEventListener("mousedown", () => setLeft(true));
+btnLeft.addEventListener("mouseup", () => setLeft(false));
+btnLeft.addEventListener("mouseleave", () => setLeft(false));
+btnLeft.addEventListener("touchstart", (e) => { e.preventDefault(); setLeft(true); });
+btnLeft.addEventListener("touchend", () => setLeft(false));
+
+btnRight.addEventListener("mousedown", () => setRight(true));
+btnRight.addEventListener("mouseup", () => setRight(false));
+btnRight.addEventListener("mouseleave", () => setRight(false));
+btnRight.addEventListener("touchstart", (e) => { e.preventDefault(); setRight(true); });
+btnRight.addEventListener("touchend", () => setRight(false));
 
 btnStart.addEventListener("click", startGame);
 btnRestart.addEventListener("click", startGame);
