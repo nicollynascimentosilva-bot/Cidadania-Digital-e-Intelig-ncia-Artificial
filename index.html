@@ -8,118 +8,148 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- ACESSIBILIDADE: LINK SEGREDO -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- CABEÇALHO HERO -->
     <header>
-        <div class="header-content">
-            <h1>Cidadania Digital e Inteligência Artificial</h1>
-            <p>O Impacto das Deepfakes e da Desinformação na Sociedade</p>
+        <div class="header-container">
+            <span class="badge">Projeto Escolar 2026</span>
+            <h1>Cidadania Digital & Inteligência Artificial</h1>
+            <p>O Impacto das Deepfakes e da Desinformação Automatizada na Sociedade</p>
         </div>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="container">
+    <main id="conteudo-principal" class="container">
 
-        <!-- SEÇÃO 1: O QUE SÃO DEEPFAKES -->
+        <!-- GRID DE INFORMAÇÕES DEEPFAKE -->
+        <div class="grid-layout">
+            <!-- SEÇÃO 1 -->
+            <section class="card">
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24" class="icon"><path d="M12 2A10 10 0 0 0 2 12c0 5.52.48 10 10 10s10-4.48 10-10A10 10 0 0 0 12 2zm1 16h-2v-2h2zm0-4h-2V7h2z"/></svg>
+                    <h2>O que são Deepfakes?</h2>
+                </div>
+                <p class="section-desc">Deepfakes são vídeos, áudios ou imagens gerados ou modificados de forma ultra-realista por meio de Inteligência Artificial profunda (<em>Deep Learning</em>). Elas conseguem clonar vozes e trocar rostos de forma quase idêntica à realidade.</p>
+                <ul class="styled-list">
+                    <li>Clonagem de voz em tempo real para golpes.</li>
+                    <li>Substituição de rostos em vídeos existentes (Face Swap).</li>
+                    <li>Criação de falsos discursos de líderes mundiais.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 2 -->
+            <section class="card">
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24" class="icon"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <h2>Como Identificar Anomalias</h2>
+                </div>
+                <p class="section-desc">Embora os algoritmos de IA evoluam rapidamente, a maioria das mídias manipuladas ainda deixa rastros físicos e digitais imperfeitos:</p>
+                <ul class="styled-list">
+                    <li>Piscadas de olhos ausentes, robóticas ou excessivas.</li>
+                    <li>Sincronia labial sutilmente desalinhada com o áudio.</li>
+                    <li>Iluminação fixa, sombras inconsistentes ou falta de brilho na íris.</li>
+                    <li>Bordas levemente borradas ao redor do pescoço ou cabelo.</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- SEÇÃO 3: IMPACTOS -->
         <section class="card">
-            <h2>🤖 O que são Deepfakes?</h2>
-            <p class="section-desc">Deepfakes são vídeos, áudios ou imagens modificados de forma realista por meio de Inteligência Artificial profunda (Deep Learning). Elas conseguem trocar rostos e clonar vozes de forma idêntica à realidade.</p>
-            <ul class="styled-list">
-                <li>Clonagem de voz em tempo real.</li>
-                <li>Substituição de rostos em vídeos existentes.</li>
-                <li>Criação de falsos discursos de líderes mundiais.</li>
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" class="icon"><path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/></svg>
+                <h2>Os Perigos da Desinformação Automatizada</h2>
+            </div>
+            <p class="section-desc">A Inteligência Artificial reduziu drasticamente o custo e o tempo necessários para criar notícias falsas em massa. Os principais riscos incluem:</p>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h3>Fraudes e Golpes</h3>
+                    <p>Uso de áudios sintéticos de familiares simulando sequestros ou pedidos de dinheiro urgente.</p>
+                </div>
+                <div class="impact-item">
+                    <h3>Manipulação Política</h3>
+                    <p>Disseminação de falsas declarações nas vésperas de votações para desestabilizar processos democráticos.</p>
+                </div>
+                <div class="impact-item">
+                    <h3>Danos Reputacionais</h3>
+                    <p>Destruição instantânea da credibilidade de estudantes, professores ou figuras públicas com montagens.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: BOAS PRÁTICAS -->
+        <section class="card highlight-card">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" class="icon"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <h2>Guia de Sobrevivência Digital</h2>
+            </div>
+            <ul class="styled-list security-list">
+                <li><strong>Duvide do Alarmismo:</strong> Desconfie de mídias que geram respostas emocionais fortes, como raiva ou medo urgente.</li>
+                <li><strong>Rastreie a Origem:</strong> Busque o mesmo conteúdo em canais de imprensa profissionais ou agências de checagem.</li>
+                <li><strong>Analise os Metadados e URL:</strong> Sites que espalham fraudes costumam clonar o layout de portais reais mudando apenas letras no domínio.</li>
+                <li><strong>Não seja um vetor:</strong> Na dúvida, interrompa a corrente de compartilhamento imediatamente.</li>
             </ul>
         </section>
 
-        <!-- SEÇÃO 2: COMO IDENTIFICAR -->
-        <section class="card">
-            <h2>🔍 Como Identificar Mídias Manipuladas</h2>
-            <p class="section-desc">Embora a IA esteja avançada, muitas ferramentas ainda deixam rastros visuais e sonoros perceptíveis.</p>
-            <ul class="styled-list">
-                <li>Piscadas de olhos ausentes, excessivas ou artificiais.</li>
-                <li>Sincronia labial desalinhada com o ritmo da fala.</li>
-                <li>Iluminação, texturas e sombras inconsistentes no rosto.</li>
-                <li>Bordas borradas ou pixeladas ao redor do pescoço, orelhas ou cabelo.</li>
-            </ul>
-        </section>
-
-        <!-- SEÇÃO NEW: IMPACTOS NA SOCIEDADE (NOVA!) -->
-        <section class="card">
-            <h2>⚖️ Os Perigos e Impactos Reais</h2>
-            <p class="section-desc">As deepfakes vão muito além de brincadeiras na internet. Elas representam riscos sérios para a sociedade:</p>
-            <ul class="styled-list">
-                <li><strong>Fraudes Financeiras:</strong> Golpistas usam vozes de parentes clonadas por IA para pedir dinheiro emergencial via PIX.</li>
-                <li><strong>Danos à Reputação:</strong> Criação de falsas evidências para difamar pessoas comuns, profissionais ou figuras públicas.</li>
-                <li><strong>Ameaça à Democracia:</strong> Disseminação de discursos políticos falsos em períodos eleitorais para manipular eleitores.</li>
-            </ul>
-        </section>
-
-        <!-- SEÇÃO 3: BOAS PRÁTICAS -->
-        <section class="card">
-            <h2>🛡️ Guia de Segurança e Boas Práticas</h2>
-            <p class="section-desc">Adote uma postura crítica na internet para não espalhar fake news automatizadas.</p>
-            <ul class="styled-list">
-                <li>Duvide de conteúdos altamente emocionais, alarmistas ou urgentes.</li>
-                <li>Consulte canais oficiais e agências especializadas em checagem de fatos.</li>
-                <li>Avalie a estrutura da URL e a credibilidade geral do site visitado.</li>
-                <li>Não compartilhe nenhuma informação se não tiver certeza absoluta da origem.</li>
-            </ul>
-        </section>
-
-        <!-- SEÇÃO INTERATIVA: QUIZ EXPANDIDO (NOVO COMPORTAMENTO!) -->
+        <!-- SEÇÃO 5: INTERATIVIDADE (QUIZ SEGURO) -->
         <section class="card quiz-section">
-            <h2>🎮 Desafio Interativo: Teste seus Reflexos Digitais</h2>
-            <p class="section-desc">Responda às situações abaixo para avaliar seu nível de segurança digital:</p>
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" class="icon"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                <h2>Desafio de Cidadania Digital</h2>
+            </div>
+            <p class="section-desc">Analise os cenários hipotéticos reais e veja se você está imune aos novos golpes digitais:</p>
             
             <!-- Pergunta 1 -->
             <div class="quiz-block" data-question="1">
-                <p class="quiz-question">1. Se você receber um vídeo de um influenciador famoso pedindo dinheiro urgente via PIX com uma voz levemente robótica, o que você faz?</p>
+                <p class="quiz-question">1. Um perfil oficial de um colega envia um link com um vídeo curto dele pedindo ajuda financeira com voz meio travada. O que fazer?</p>
                 <div class="quiz-container">
-                    <button class="quiz-option" data-correct="false">Transfiro o valor imediatamente para ajudar.</button>
-                    <button class="quiz-option" data-correct="false">Compartilho o vídeo em todos os meus grupos.</button>
-                    <button class="quiz-option" data-correct="true">Desconfio de golpe, evito enviar dinheiro e aviso outras pessoas.</button>
+                    <button class="quiz-option" data-correct="false">Fazer a transferência via PIX rápido para evitar problemas maiores.</button>
+                    <button class="quiz-option" data-correct="true">Ligar para o colega por chamada convencional ou validar por outro canal de comunicação.</button>
+                    <button class="quiz-option" data-correct="false">Compartilhar o link no grupo da sala perguntando se alguém sabe se é real.</button>
                 </div>
                 <div class="quiz-feedback"></div>
             </div>
 
             <!-- Pergunta 2 -->
             <div class="quiz-block" data-question="2">
-                <p class="quiz-question">2. Você encontrou uma notícia bombástica sobre uma nova descoberta médica, mas ela só está publicada em um blog desconhecido. Qual a melhor atitude?</p>
+                <p class="quiz-question">2. Você visualiza um vídeo onde o diretor da sua escola faz declarações absurdas. Ao olhar de perto, o fundo treme levemente. Como proceder?</p>
                 <div class="quiz-container">
-                    <button class="quiz-option" data-correct="true">Compenso pesquisando o assunto em portais de notícias confiáveis antes de acreditar.</button>
-                    <button class="quiz-option" data-correct="false">Publico imediatamente nas redes sociais para alertar meus amigos.</button>
-                    <button class="quiz-option" data-correct="false">Acredito na notícia, pois o texto possui imagens bem profissionais.</button>
+                    <button class="quiz-option" data-correct="true">Tratar como possível deepfake e consultar a coordenação pedagógica da instituição antes de passar adiante.</button>
+                    <button class="quiz-option" data-correct="false">Enviar imediatamente nos grupos de WhatsApp dos pais como denúncia urgente.</button>
+                    <button class="quiz-option" data-correct="false">Ignorar totalmente o fato, pois o problema não envolve suas notas ou histórico.</button>
                 </div>
                 <div class="quiz-feedback"></div>
             </div>
 
-            <!-- Pergunta 3 -->
-            <div class="quiz-block" data-question="3">
-                <p class="quiz-question">3. Ao assistir ao vídeo de um político, você nota que os dentes dele somem por um milissegundo quando ele fala e as orelhas parecem borradas. O que isso indica?</p>
-                <div class="quiz-container">
-                    <button class="quiz-option" data-correct="false">Uma falha comum na gravação de qualquer câmera moderna.</button>
-                    <button class="quiz-option" data-correct="true">Fortes indícios de manipulação digital ou aplicação de Deepfake.</button>
-                    <button class="quiz-option" data-correct="false">Que o vídeo foi gravado em baixíssima resolução propositalmente.</button>
-                </div>
-                <div class="quiz-feedback"></div>
+            <!-- Painel de Resultados Acumulados -->
+            <div id="quiz-score-panel" class="score-panel hidden">
+                <p>📊 Seu desempenho final: <span id="score-value">0</span> de 2 acertos.</p>
             </div>
         </section>
 
-        <!-- SEÇÃO NEW: RECURSOS ÚTEIS (NOVA!) -->
-        <section class="card">
-            <h2>🔗 Ferramentas e Canais de Checagem</h2>
-            <p class="section-desc">Sempre que estiver em dúvida sobre a veracidade de um fato, consulte canais profissionais de verificação:</p>
-            <ul class="styled-list font-links">
-                <li><a href="https://globo.com" target="_blank">Fato ou Fake (G1)</a></li>
-                <li><a href="https://aosfatos.org" target="_blank">Aos Fatos</a></li>
-                <li><a href="https://lupa.news" target="_blank">Agência Lupa</a></li>
+        <!-- SEÇÃO 6: CRÉDITOS E AGÊNCIAS -->
+        <section class="card tools-section">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" class="icon"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                <h2>Canais de Checagem Recomendados</h2>
+            </div>
+            <p class="section-desc">Desenvolva o hábito de auditar o que recebe nos portais oficiais de checagem do Brasil:</p>
+            <ul class="styled-list checking-channels">
+                <li><a href="https://globo.com" target="_blank" rel="noopener">Fato ou Fake — Monitoramento do Portal G1</a></li>
+                <li><a href="https://aosfatos.org" target="_blank" rel="noopener">Aos Fatos — Jornalismo focado em checagem de fatos</a></li>
+                <li><a href="https://lupa.news" target="_blank" rel="noopener">Agência Lupa — Primeira agência de fact-checking do Brasil</a></li>
             </ul>
         </section>
 
     </main>
 
-    <!-- RODAPÉ -->
+    <!-- RODAPÉ COMPACTO -->
     <footer>
-        <p>Projeto Escolar 2026 • Focado em Cidadania Digital</p>
+        <div class="footer-content">
+            <p>Atividade Pedagógica 2026 • Foco em Segurança da Informação</p>
+            <p class="footer-tag">Hashtag de Validação: <code>#cidadaniadigital2026</code></p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
