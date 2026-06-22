@@ -35,10 +35,21 @@
             <h2>🔍 Como Identificar Mídias Manipuladas</h2>
             <p class="section-desc">Embora a IA esteja avançada, muitas ferramentas ainda deixam rastros visuais e sonoros perceptíveis.</p>
             <ul class="styled-list">
-                <li>Piscadas de olhos ausentes ou artificiais.</li>
-                <li>Sincronia labial desalinhada com a fala.</li>
-                <li>Iluminação e sombras inconsistentes no rosto.</li>
-                <li>Bordas borradas ao redor do pescoço ou cabelo.</li>
+                <li>Piscadas de olhos ausentes, excessivas ou artificiais.</li>
+                <li>Sincronia labial desalinhada com o ritmo da fala.</li>
+                <li>Iluminação, texturas e sombras inconsistentes no rosto.</li>
+                <li>Bordas borradas ou pixeladas ao redor do pescoço, orelhas ou cabelo.</li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO NEW: IMPACTOS NA SOCIEDADE (NOVA!) -->
+        <section class="card">
+            <h2>⚖️ Os Perigos e Impactos Reais</h2>
+            <p class="section-desc">As deepfakes vão muito além de brincadeiras na internet. Elas representam riscos sérios para a sociedade:</p>
+            <ul class="styled-list">
+                <li><strong>Fraudes Financeiras:</strong> Golpistas usam vozes de parentes clonadas por IA para pedir dinheiro emergencial via PIX.</li>
+                <li><strong>Danos à Reputação:</strong> Criação de falsas evidências para difamar pessoas comuns, profissionais ou figuras públicas.</li>
+                <li><strong>Ameaça à Democracia:</strong> Disseminação de discursos políticos falsos em períodos eleitorais para manipular eleitores.</li>
             </ul>
         </section>
 
@@ -47,25 +58,61 @@
             <h2>🛡️ Guia de Segurança e Boas Práticas</h2>
             <p class="section-desc">Adote uma postura crítica na internet para não espalhar fake news automatizadas.</p>
             <ul class="styled-list">
-                <li>Duvide de conteúdos altamente emocionais.</li>
-                <li>Consulte canais oficiais de checagem.</li>
-                <li>Avalie a URL e a credibilidade do site visitado.</li>
-                <li>Não compartilhe se não tiver certeza da origem.</li>
+                <li>Duvide de conteúdos altamente emocionais, alarmistas ou urgentes.</li>
+                <li>Consulte canais oficiais e agências especializadas em checagem de fatos.</li>
+                <li>Avalie a estrutura da URL e a credibilidade geral do site visitado.</li>
+                <li>Não compartilhe nenhuma informação se não tiver certeza absoluta da origem.</li>
             </ul>
         </section>
 
-        <!-- SEÇÃO INTERATIVA: QUIZ -->
+        <!-- SEÇÃO INTERATIVA: QUIZ EXPANDIDO (NOVO COMPORTAMENTO!) -->
         <section class="card quiz-section">
-            <h2>🎮 Desafio Interativo: Você Sabe Detectar?</h2>
-            <p class="quiz-question">Se você receber um vídeo de um influenciador famoso pedindo dinheiro urgente via PIX com uma voz levemente robótica, o que você faz?</p>
+            <h2>🎮 Desafio Interativo: Teste seus Reflexos Digitais</h2>
+            <p class="section-desc">Responda às situações abaixo para avaliar seu nível de segurança digital:</p>
             
-            <div class="quiz-container">
-                <button class="quiz-option btn-wrong" data-correct="false">Transfiro o valor imediatamente para ajudar.</button>
-                <button class="quiz-option btn-wrong" data-correct="false">Compartilho o vídeo em todos os meus grupos.</button>
-                <button class="quiz-option btn-correct" data-correct="true">Desconfio de golpe, evito enviar dinheiro e aviso outras pessoas.</button>
+            <!-- Pergunta 1 -->
+            <div class="quiz-block" data-question="1">
+                <p class="quiz-question">1. Se você receber um vídeo de um influenciador famoso pedindo dinheiro urgente via PIX com uma voz levemente robótica, o que você faz?</p>
+                <div class="quiz-container">
+                    <button class="quiz-option" data-correct="false">Transfiro o valor imediatamente para ajudar.</button>
+                    <button class="quiz-option" data-correct="false">Compartilho o vídeo em todos os meus grupos.</button>
+                    <button class="quiz-option" data-correct="true">Desconfio de golpe, evito enviar dinheiro e aviso outras pessoas.</button>
+                </div>
+                <div class="quiz-feedback"></div>
             </div>
-            
-            <div id="quiz-feedback" class="hidden"></div>
+
+            <!-- Pergunta 2 -->
+            <div class="quiz-block" data-question="2">
+                <p class="quiz-question">2. Você encontrou uma notícia bombástica sobre uma nova descoberta médica, mas ela só está publicada em um blog desconhecido. Qual a melhor atitude?</p>
+                <div class="quiz-container">
+                    <button class="quiz-option" data-correct="true">Compenso pesquisando o assunto em portais de notícias confiáveis antes de acreditar.</button>
+                    <button class="quiz-option" data-correct="false">Publico imediatamente nas redes sociais para alertar meus amigos.</button>
+                    <button class="quiz-option" data-correct="false">Acredito na notícia, pois o texto possui imagens bem profissionais.</button>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="quiz-block" data-question="3">
+                <p class="quiz-question">3. Ao assistir ao vídeo de um político, você nota que os dentes dele somem por um milissegundo quando ele fala e as orelhas parecem borradas. O que isso indica?</p>
+                <div class="quiz-container">
+                    <button class="quiz-option" data-correct="false">Uma falha comum na gravação de qualquer câmera moderna.</button>
+                    <button class="quiz-option" data-correct="true">Fortes indícios de manipulação digital ou aplicação de Deepfake.</button>
+                    <button class="quiz-option" data-correct="false">Que o vídeo foi gravado em baixíssima resolução propositalmente.</button>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO NEW: RECURSOS ÚTEIS (NOVA!) -->
+        <section class="card">
+            <h2>🔗 Ferramentas e Canais de Checagem</h2>
+            <p class="section-desc">Sempre que estiver em dúvida sobre a veracidade de um fato, consulte canais profissionais de verificação:</p>
+            <ul class="styled-list font-links">
+                <li><a href="https://globo.com" target="_blank">Fato ou Fake (G1)</a></li>
+                <li><a href="https://aosfatos.org" target="_blank">Aos Fatos</a></li>
+                <li><a href="https://lupa.news" target="_blank">Agência Lupa</a></li>
+            </ul>
         </section>
 
     </main>
@@ -75,7 +122,6 @@
         <p>Projeto Escolar 2026 • Focado em Cidadania Digital</p>
     </footer>
 
-    <!-- CORREÇÃO: Alterado de 'href' para 'src' -->
     <script src="script.js"></script>
 </body>
 </html>
