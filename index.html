@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cidadania Digital: O Impacto das Deepfakes e IA</title>
-    <!-- Vinculação do arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- CABEÇALHO -->
     <header>
-        <h1>Cidadania Digital e Inteligência Artificial</h1>
-        <p>O Impacto das Deepfakes e da Desinformação na Sociedade</p>
+        <div class="header-content">
+            <h1>Cidadania Digital e Inteligência Artificial</h1>
+            <p>O Impacto das Deepfakes e da Desinformação na Sociedade</p>
+        </div>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <div class="container">
+    <main class="container">
 
         <!-- SEÇÃO 1: O QUE SÃO DEEPFAKES -->
-        <section>
+        <section class="card">
             <h2>🤖 O que são Deepfakes?</h2>
             <p class="section-desc">Deepfakes são vídeos, áudios ou imagens modificados de forma realista por meio de Inteligência Artificial profunda (Deep Learning). Elas conseguem trocar rostos e clonar vozes de forma idêntica à realidade.</p>
-            <ul>
+            <ul class="styled-list">
                 <li>Clonagem de voz em tempo real.</li>
                 <li>Substituição de rostos em vídeos existentes.</li>
                 <li>Criação de falsos discursos de líderes mundiais.</li>
@@ -30,10 +31,10 @@
         </section>
 
         <!-- SEÇÃO 2: COMO IDENTIFICAR -->
-        <section>
+        <section class="card">
             <h2>🔍 Como Identificar Mídias Manipuladas</h2>
             <p class="section-desc">Embora a IA esteja avançada, muitas ferramentas ainda deixam rastros visuais e sonoros perceptíveis.</p>
-            <ul>
+            <ul class="styled-list">
                 <li>Piscadas de olhos ausentes ou artificiais.</li>
                 <li>Sincronia labial desalinhada com a fala.</li>
                 <li>Iluminação e sombras inconsistentes no rosto.</li>
@@ -42,10 +43,10 @@
         </section>
 
         <!-- SEÇÃO 3: BOAS PRÁTICAS -->
-        <section>
+        <section class="card">
             <h2>🛡️ Guia de Segurança e Boas Práticas</h2>
             <p class="section-desc">Adote uma postura crítica na internet para não espalhar fake news automatizadas.</p>
-            <ul>
+            <ul class="styled-list">
                 <li>Duvide de conteúdos altamente emocionais.</li>
                 <li>Consulte canais oficiais de checagem.</li>
                 <li>Avalie a URL e a credibilidade do site visitado.</li>
@@ -54,27 +55,27 @@
         </section>
 
         <!-- SEÇÃO INTERATIVA: QUIZ -->
-        <section>
+        <section class="card quiz-section">
             <h2>🎮 Desafio Interativo: Você Sabe Detectar?</h2>
-            <p>Se você receber um vídeo de um influenciador famoso pedindo dinheiro urgente via PIX com uma voz levemente robótica, o que você faz?</p>
+            <p class="quiz-question">Se você receber um vídeo de um influenciador famoso pedindo dinheiro urgente via PIX com uma voz levemente robótica, o que você faz?</p>
             
             <div class="quiz-container">
-                <button class="quiz-option" data-correct="false">Transfiro o valor imediatamente para ajudar.</button>
-                <button class="quiz-option" data-correct="false">Compartilho o vídeo em todos os meus grupos.</button>
-                <button class="quiz-option" data-correct="true">Desconfio de golpe, evito enviar dinheiro e aviso outras pessoas.</button>
+                <button class="quiz-option btn-wrong" data-correct="false">Transfiro o valor imediatamente para ajudar.</button>
+                <button class="quiz-option btn-wrong" data-correct="false">Compartilho o vídeo em todos os meus grupos.</button>
+                <button class="quiz-option btn-correct" data-correct="true">Desconfio de golpe, evito enviar dinheiro e aviso outras pessoas.</button>
             </div>
             
-            <div id="quiz-feedback"></div>
+            <div id="quiz-feedback" class="hidden"></div>
         </section>
 
-    </div>
+    </main>
 
     <!-- RODAPÉ -->
     <footer>
         <p>Projeto Escolar 2026 • Focado em Cidadania Digital</p>
     </footer>
 
-    <!-- Vinculação do arquivo JavaScript externo -->
-    <script href="script.js"></script>
+    <!-- CORREÇÃO: Alterado de 'href' para 'src' -->
+    <script src="script.js"></script>
 </body>
 </html>
