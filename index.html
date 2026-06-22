@@ -3,71 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consciência Digital - IA e Deepfakes 2026</title>
+    <title>Cidadania Digital - Conscientização sobre IA e Deepfakes</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Principal com Acessibilidade -->
+    <!-- Header Semântico com Flexbox -->
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <span>Cidadania</span><span class="highlight">Digital</span>
+                Portal <span class="highlight">Cidadania IA</span>
             </div>
             <nav class="nav-menu">
-                <a href="#sobre">Desafio</a>
+                <a href="#sobre">Sobre o Desafio</a>
                 <a href="#quiz">Simulador</a>
-                <a href="#denuncia">Canais</a>
+                <a href="#denuncia">Denunciar Canal</a>
             </nav>
-            <div class="accessibility-control">
-                <button id="toggle-contrast" aria-label="Alternar alto contraste" class="btn-accessibility">A+</button>
+            <div>
+                <button id="toggle-contrast" aria-label="Mudar Contraste Visual" class="btn-accessibility">A+</button>
             </div>
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main>
-        <!-- Hero Section: Impacto e Contexto -->
+        <!-- Seção de Abertura (Hero) -->
         <section id="sobre" class="hero-section">
             <div class="section-container">
                 <h1>O Impacto das Deepfakes e da Desinformação na Sociedade</h1>
-                <p>A inteligência artificial transformou a criação de mídia. Aprender a diferenciar o real do manipulado é o primeiro passo para exercer sua cidadania digital com segurança.</p>
-                <div class="badge-container">
+                <p>Com o avanço da Inteligência Artificial, conteúdos falsos parecem cada vez mais reais. Desenvolver um olhar crítico e consciente é fundamental para a segurança e integridade coletiva.</p>
+                <div>
                     <span class="badge">#cidadaniadigital2026</span>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Interativa: Quiz Anti-Desinformação -->
+        <!-- Seção do Simulador Interativo -->
         <section id="quiz" class="quiz-section">
             <div class="section-container">
-                <h2>Simulador de Análise de Mídia</h2>
-                <p class="section-subtitle">Você consegue detectar uma deepfake? Faça o teste abaixo baseado em casos reais de análise computacional.</p>
+                <h2 class="section-title">Simulador de Detecção Biométrica</h2>
+                <p class="section-subtitle">Analise o caso prático apresentado abaixo e tente classificar a veracidade da mídia com base em sinais técnicos.</p>
                 
                 <div class="quiz-card">
                     <div class="quiz-header">
-                        <span class="step-indicator">Análise de Caso 1 de 1</span>
-                        <h3 id="quiz-question">Um vídeo mostra um líder político declarando estado de emergência. A iluminação de fundo muda sutilmente, e as bordas do rosto piscam levemente quando ele se move rápido. O que isso indica?</h3>
+                        <span class="step-indicator">Caso sob Investigação 01</span>
+                        <h3>Um vídeo institucional recebido via rede social apresenta um porta-voz declarando uma mudança de lei urgente. No entanto, quando ele se move rapidamente para os lados, as orelhas desaparecem por frações de segundo e a voz continua linear e robotizada. Qual o diagnóstico?</h3>
                     </div>
 
                     <div class="quiz-options">
                         <label class="option-label">
                             <input type="radio" name="quiz-answer" value="real">
-                            <span class="custom-radio"></span>
-                            Visual autêntico. Apenas oscilação normal da compressão da câmera de celular.
+                            Mídia Autêntica. Trata-se apenas de lentidão na rede de internet ou compactação severa do arquivo de vídeo.
                         </label>
                         <label class="option-label">
                             <input type="radio" name="quiz-answer" value="fake">
-                            <span class="custom-radio"></span>
-                            Artefatos de IA. Inconsistências de iluminação em bordas são falhas comuns de renderização de Deepfakes.
+                            Mídia Manipulada (Deepfake). Sumiço de partes do corpo e voz sem modulação natural indicam falhas de renderização sintética de IA.
                         </label>
                     </div>
 
-                    <div class="quiz-actions">
-                        <button id="btn-verify" class="btn-primary">Verificar Resposta</button>
-                    </div>
+                    <button id="btn-verify" class="btn-primary">Processar Diagnóstico</button>
 
-                    <!-- Feedback Dinâmico (Controlado via JS) -->
+                    <!-- Resposta Injetada de Forma Dinâmica via JS -->
                     <div id="quiz-feedback" class="feedback-box hidden">
                         <p id="feedback-text"></p>
                     </div>
@@ -75,44 +70,44 @@
             </div>
         </section>
 
-        <!-- Seção de Formulário Semântico: Denúncia/Engajamento -->
+        <!-- Seção de Formulário Coletor -->
         <section id="denuncia" class="form-section">
             <div class="section-container">
-                <h2>Central de Alerta Comunitário</h2>
-                <p class="section-subtitle">Detectou um link suspeito ou vídeo manipulado circulando nos grupos escolares? Relate para verificação interna.</p>
+                <h2 class="section-title">Central Comunitária de Alertas</h2>
+                <p class="section-subtitle">Encontrou algum link contendo montagens difamatórias ou vídeos duvidosos gerados por IA? Relate para triagem.</p>
                 
                 <form id="report-form" class="custom-form">
                     <div class="form-group">
-                        <label for="user-name">Nome Completo</label>
-                        <input type="text" id="user-name" name="userName" placeholder="Ex: Maria Silva" required>
+                        <label for="user-name">Nome do Relator</label>
+                        <input type="text" id="user-name" placeholder="Ex: Lucas Mendes" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="media-url">Link da Mídia Suspeita</label>
-                        <input type="url" id="media-url" name="mediaUrl" placeholder="https://exemplo.com" required>
+                        <label for="media-url">Endereço Eletrônico da Mídia (URL)</label>
+                        <input type="url" id="media-url" placeholder="https://plataforma.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="observation">Sinais de Manipulação Observados</label>
-                        <textarea id="observation" name="observation" rows="4" placeholder="Ex: Áudio dessincronizado dos lábios, movimentos robóticos..." required></textarea>
+                        <label for="observation">Anomalias Detectadas pelo Relator</label>
+                        <textarea id="observation" rows="4" placeholder="Descreva os fatores que geraram desconfiança (Ex: piscar de olhos ausente, voz artificial...)" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-submit">Enviar Alerta</button>
+                    <button type="submit" class="btn-submit">Registrar Alerta</button>
                 </form>
 
-                <!-- Feedback do Formulário -->
+                <!-- Confirmação reativa via JavaScript -->
                 <div id="form-success" class="success-toast hidden">
-                    <p> Alerta registrado com sucesso! Total de relatórios enviados nesta sessão: <span id="counter-value">0</span></p>
+                    <p>✓ Registro catalogado com sucesso! Total de mídias enviadas para análise nesta sessão: <span id="counter-value">0</span></p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Rodapé Proprietário com Créditos Autorais -->
+    <!-- Rodapé Proprietário -->
     <footer class="main-footer">
         <div class="footer-container">
-            <p>&copy; 2026 Portal Cidadania Digital. Conteúdo 100% autoral produzido para fins educacionais comunitários.</p>
-            <p class="credits">Código e mídias vetoriais CSS customizados pelos estudantes criadores.</p>
+            <p>&copy; 2026 Portal Cidadania Digital. Todos os direitos reservados. Conteúdo 100% autoral e customizado.</p>
+            <p class="credits">Desenvolvido com foco em acessibilidade visual e segurança computacional.</p>
         </div>
     </footer>
 
