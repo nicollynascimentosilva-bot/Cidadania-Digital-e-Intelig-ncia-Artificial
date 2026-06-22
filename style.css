@@ -1,39 +1,45 @@
 /* ==========================================================================
-   1. Identidade Visual Proprietária: Cores, Variáveis e Alto Contraste
+   1. Variáveis e Cores — Padrão Google Material Design
    ========================================================================== */
 :root {
-    --bg-main: #060b16;          /* Azul espaço profundo (Fundo) */
-    --bg-card: #0d1527;          /* Azul tecnológico (Cards e Header) */
-    --bg-input: #131f38;         /* Azul claro para campos de digitação */
+    --g-primary: #1a73e8;        /* Azul Clássico do Google */
+    --g-primary-hover: #1557b0;  /* Azul Escuro para estados ativos */
+    --g-bg-surface: #ffffff;     /* Superfície limpa */
+    --g-bg-base: #f8f9fa;        /* Fundo cinza claro oficial do Google */
     
-    --text-pure: #ffffff;        /* Branco puro para títulos */
-    --text-body: #94a3b8;        /* Cinza azulado de alta leitura para textos */
+    --g-text-title: #202124;     /* Cinza quase preto de alta legibilidade */
+    --g-text-body: #5f6368;      /* Cinza médio para textos de leitura */
     
-    --brand-cyan: #00f0ff;       /* Ciano Neon (Links, botões e foco) */
-    --brand-purple: #7000ff;     /* Roxo Elétrico (Gradientes e destaque) */
-    --status-alert: #ffb700;     /* Amarelo Âmbar (Alertas e erros do quiz) */
-    --status-valid: #00ff87;     /* Verde Esmeralda (Sucesso e acertos) */
+    --g-color-success: #137333;  /* Verde Google */
+    --g-bg-success: #e6f4ea;     /* Fundo verde suave */
+    --g-color-error: #c5221f;    /* Vermelho Google */
+    --g-bg-error: #fce8e6;       /* Fundo vermelho suave */
     
-    --border-glow: #1e293b;      /* Borda padrão discreta */
-    --fx-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --g-border: #dadce0;         /* Linha de divisão discreta */
+    --g-radius-card: 16px;       /* Cantos arredondados modernos */
+    --g-radius-button: 24px;     /* Botões em formato de pílula */
+    
+    --g-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --g-shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    --g-shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
 }
 
-/* Estado de Alto Contraste (Exigência de Acessibilidade via JS) */
+/* Modo de Alto Contraste para Acessibilidade Universal */
 body.high-contrast {
-    --bg-main: #000000;
-    --bg-card: #111111;
-    --bg-input: #222222;
-    --text-pure: #ffffff;
-    --text-body: #ffffff;
-    --brand-cyan: #ffff00;       /* Amarelo puro para máxima leitura */
-    --brand-purple: #ffffff;
-    --status-alert: #ffff00;
-    --status-valid: #00ff00;
-    --border-glow: #ffffff;
+    --g-primary: #0052cc;
+    --g-bg-surface: #ffffff;
+    --g-bg-base: #ffffff;
+    --g-text-title: #000000;
+    --g-text-body: #000000;
+    --g-border: #000000;
+    --g-color-success: #0052cc;
+    --g-bg-success: #ffffff;
+    --g-color-error: #000000;
+    --g-bg-error: #ffffff;
 }
 
 /* ==========================================================================
-   2. Reset e Configurações de Base
+   2. Reset e Estilos de Base
    ========================================================================== */
 * {
     margin: 0;
@@ -43,333 +49,378 @@ body.high-contrast {
 
 html {
     scroll-behavior: smooth;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Google Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-body);
+    background-color: var(--g-bg-surface);
+    color: var(--g-text-body);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-.section-container {
+.g-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 840px; /* Largura ideal para leitura e foco */
     margin: 0 auto;
-    padding: 80px 24px;
+    padding: 0 24px;
 }
 
 /* ==========================================================================
-   3. Layout Estrutural com Flexbox (Header, Nav e Footer)
+   3. Estruturação do Layout via Flexbox
    ========================================================================== */
-.main-header {
-    background-color: var(--bg-card);
-    border-bottom: 2px solid var(--border-glow);
+.g-header {
+    background-color: var(--g-bg-surface);
+    border-bottom: 1px solid var(--g-border);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(8px);
 }
 
-.header-container {
+.g-header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    height: 64px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 24px;
+    padding: 0 24px;
 }
 
-.logo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text-pure);
-    letter-spacing: -0.5px;
-}
-
-.logo .highlight {
-    color: var(--brand-cyan);
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-}
-
-.nav-menu {
-    display: flex;
-    gap: 32px;
-}
-
-.nav-menu a {
-    color: var(--text-body);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--fx-transition);
-}
-
-/* Interação Hover Suave que direciona o foco */
-.nav-menu a:hover {
-    color: var(--brand-cyan);
-}
-
-/* ==========================================================================
-   4. Seções de Conteúdo e Identidade Visual (Hero, Quiz e Form)
-   ========================================================================== */
-
-/* Hero com gradiente proprietário simulando redes profundas */
-.hero-section {
-    text-align: center;
-    background: radial-gradient(circle at center, #121b3a 0%, var(--bg-main) 100%);
-    border-bottom: 1px solid var(--border-glow);
-}
-
-.hero-section h1 {
-    font-size: 3rem;
-    color: var(--text-pure);
-    margin-bottom: 20px;
-    line-height: 1.15;
-    font-weight: 800;
-}
-
-.hero-section p {
-    max-width: 680px;
-    margin: 0 auto 32px auto;
-    font-size: 1.15rem;
-}
-
-.badge {
-    background: linear-gradient(135deg, var(--brand-purple), var(--brand-cyan));
-    color: var(--text-pure);
-    padding: 6px 18px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(112, 0, 255, 0.4);
-}
-
-/* Seção de Quiz */
-.quiz-section {
-    background-color: var(--bg-card);
-}
-
-.section-title {
-    color: var(--text-pure);
-    font-size: 2rem;
-    margin-bottom: 8px;
-}
-
-.section-subtitle {
-    margin-bottom: 40px;
-    font-size: 1rem;
-}
-
-.quiz-card {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-glow);
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.step-indicator {
-    color: var(--status-alert);
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.quiz-header h3 {
-    color: var(--text-pure);
-    margin-top: 12px;
-    margin-bottom: 32px;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.quiz-options {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 32px;
-}
-
-.option-label {
+.g-brand {
     display: flex;
     align-items: center;
-    background-color: var(--bg-input);
-    border: 1px solid transparent;
-    padding: 18px;
-    border-radius: 10px;
+    gap: 8px;
     cursor: pointer;
-    color: var(--text-pure);
-    font-weight: 500;
-    transition: var(--fx-transition);
 }
 
-.option-label:hover {
-    border-color: var(--brand-cyan);
-    background-color: var(--bg-card);
+.g-logo-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--g-primary);
 }
 
-.option-label input {
-    margin-right: 16px;
-    width: 18px;
-    height: 18px;
-    accent-color: var(--brand-cyan);
+.g-logo-text {
+    font-size: 1.25rem;
+    color: var(--g-text-title);
+    letter-spacing: -0.25px;
 }
 
-/* Botões Interativos Modificados */
-.btn-primary, .btn-submit {
-    background-color: var(--brand-cyan);
-    color: #060b16;
-    border: none;
-    padding: 16px 32px;
-    font-size: 1rem;
+.g-logo-bold {
     font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--fx-transition);
+    color: var(--g-primary);
 }
 
-.btn-primary:hover, .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-}
-
-.btn-accessibility {
-    background-color: transparent;
-    color: var(--brand-cyan);
-    border: 1px solid var(--brand-cyan);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--fx-transition);
-}
-
-.btn-accessibility:hover {
-    background-color: var(--brand-cyan);
-    color: #000;
-}
-
-/* Caixas de Feedback Dinâmico Multicoloridas */
-.feedback-box {
-    margin-top: 24px;
-    padding: 24px;
-    border-radius: 8px;
-    font-weight: 500;
-    line-height: 1.5;
-}
-
-.feedback-box.correct {
-    background-color: rgba(0, 255, 135, 0.1);
-    border: 1px solid var(--status-valid);
-    color: #c7ffeb;
-}
-
-.feedback-box.wrong {
-    background-color: rgba(255, 183, 0, 0.1);
-    border: 1px solid var(--status-alert);
-    color: #ffeed1;
-}
-
-/* Formulário Customizado */
-.custom-form {
+.g-nav {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
-    max-width: 650px;
-    background-color: var(--bg-card);
-    padding: 40px;
-    border-radius: 16px;
-    border: 1px solid var(--border-glow);
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
     gap: 8px;
 }
 
-.form-group label {
-    color: var(--text-pure);
+.g-nav-link {
+    color: var(--g-text-body);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 8px 16px;
+    border-radius: var(--g-radius-button);
+    transition: var(--g-transition);
+}
+
+/* Efeito Hover Suave e Limpo */
+.g-nav-link:hover {
+    background-color: var(--g-bg-base);
+    color: var(--g-text-title);
+}
+
+/* ==========================================================================
+   4. Componentes de Interface (Hero, Cards, Botões)
+   ========================================================================== */
+.g-hero {
+    padding: 80px 0 60px 0;
+    text-align: center;
+}
+
+.g-hero-badge {
+    display: inline-block;
+    color: var(--g-primary);
+    background-color: #e8f0fe;
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.g-hero-title {
+    font-size: 2.75rem;
+    color: var(--g-text-title);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.g-hero-subtitle {
+    font-size: 1.15rem;
+    max-width: 640px;
+    margin: 0 auto 32px auto;
+    color: var(--g-text-body);
+}
+
+.g-hashtag {
+    background-color: var(--g-bg-base);
+    border: 1px solid var(--g-border);
+    color: var(--g-text-body);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Configurações das Seções */
+.g-section {
+    padding: 60px 0;
+}
+
+.g-bg-light {
+    background-color: var(--g-bg-base);
+}
+
+.g-section-header {
+    margin-bottom: 32px;
+}
+
+.g-section-title {
+    font-size: 1.75rem;
+    color: var(--g-text-title);
     font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Cards do Material Design */
+.g-card {
+    background-color: var(--g-bg-surface);
+    border: 1px solid var(--g-border);
+    border-radius: var(--g-radius-card);
+    padding: 32px;
+    transition: var(--g-transition);
+}
+
+.g-card:hover {
+    box-shadow: var(--g-shadow-md);
+}
+
+.g-card-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--g-primary);
+    font-weight: 700;
+}
+
+.g-card-question {
+    font-size: 1.25rem;
+    color: var(--g-text-title);
+    margin-top: 8px;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+/* Opções de Seleção Otimizadas para Toque e Clique */
+.g-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.g-option-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid var(--g-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--g-transition);
+}
+
+.g-option-card:hover {
+    background-color: #f8f9fa;
+    border-color: #9cc3f8;
+}
+
+.g-radio-input {
+    margin-top: 4px;
+    margin-right: 16px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--g-primary);
+}
+
+.g-radio-label {
+    font-size: 0.95rem;
+    color: var(--g-text-title);
+}
+
+/* Botões do Google */
+.g-btn-primary {
+    background-color: var(--g-primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--g-radius-button);
+    cursor: pointer;
+    transition: var(--g-transition);
+    box-shadow: var(--g-shadow-sm);
+}
+
+.g-btn-primary:hover {
+    background-color: var(--g-primary-hover);
+    box-shadow: 0 2px 4px 0 rgba(66,133,244,0.3), 0 1px 3px 1px rgba(66,133,244,0.15);
+}
+
+.g-btn-icon {
+    background: transparent;
+    border: none;
+    color: var(--g-text-body);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--g-transition);
+}
+
+.g-btn-icon:hover {
+    background-color: rgba(95,99,104,0.1);
+    color: var(--g-text-title);
+}
+
+/* Caixas de Feedback Integradas */
+.g-feedback {
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 8px;
     font-size: 0.95rem;
 }
 
-.form-group input, .form-group textarea {
-    background-color: var(--bg-input);
-    border: 1px solid var(--border-glow);
-    color: var(--text-pure);
-    padding: 14px;
+.g-feedback.correct {
+    background-color: var(--g-bg-success);
+    color: var(--g-color-success);
+    border-left: 4px solid var(--g-color-success);
+}
+
+.g-feedback.wrong {
+    background-color: var(--g-bg-error);
+    color: var(--g-color-error);
+    border-left: 4px solid var(--g-color-error);
+}
+
+/* Formulário Limpo */
+.g-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--g-bg-surface);
+    border: 1px solid var(--g-border);
+    padding: 32px;
+    border-radius: var(--g-radius-card);
+}
+
+.g-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.g-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--g-text-title);
+}
+
+.g-input, .g-textarea {
+    border: 1px solid var(--g-border);
     border-radius: 8px;
-    font-family: inherit;
+    padding: 12px 16px;
     font-size: 1rem;
-    transition: var(--fx-transition);
+    font-family: inherit;
+    color: var(--g-text-title);
+    transition: var(--g-transition);
 }
 
-.form-group input:focus, .form-group textarea:focus {
+.g-input:focus, .g-textarea:focus {
     outline: none;
-    border-color: var(--brand-cyan);
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    border-color: var(--g-primary);
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
 }
 
-.success-toast {
-    margin-top: 24px;
-    background-color: rgba(0, 255, 135, 0.15);
-    border: 1px solid var(--status-valid);
-    padding: 20px;
+.g-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    background-color: var(--g-bg-success);
+    color: var(--g-color-success);
+    padding: 16px;
     border-radius: 8px;
-    color: #c7ffeb;
-    max-width: 650px;
-}
-
-#counter-value {
-    color: var(--brand-cyan);
-    font-weight: 800;
+    font-weight: 500;
 }
 
 .hidden {
     display: none !important;
 }
 
-/* Footer Profissional */
-.main-footer {
-    background-color: #03060d;
-    border-top: 1px solid var(--border-glow);
-    text-align: center;
-    padding: 40px 24px;
-    font-size: 0.9rem;
+/* Rodapé Google Style */
+.g-footer {
+    background-color: var(--g-bg-base);
+    border-top: 1px solid var(--g-border);
+    padding: 24px 0;
+    font-size: 0.75rem;
+    color: var(--g-text-body);
 }
 
-.main-footer p {
-    margin-bottom: 8px;
-}
-
-.credits {
-    color: var(--brand-cyan);
-    font-weight: 500;
+.g-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 /* ==========================================================================
-   5. Media Queries Estritas (Responsividade para Celular/Tablet)
+   5. Responsividade via Media Queries
    ========================================================================== */
-@media (max-width: 768px) {
-    .header-container {
+@media (max-width: 600px) {
+    .g-header-container {
         flex-direction: column;
-        gap: 16px;
+        height: auto;
+        padding: 16px 24px;
+        gap: 12px;
     }
 
-    .nav-menu {
-        gap: 20px;
+    .g-nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
-    .hero-section h1 {
-        font-size: 2.2rem;
+    .g-hero-title {
+        font-size: 2rem;
     }
 
-    .quiz-card, .custom-form {
-        padding: 24px;
+    .g-card, .g-form {
+        padding: 20px;
+    }
+
+    .g-footer-container {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
     }
 }
