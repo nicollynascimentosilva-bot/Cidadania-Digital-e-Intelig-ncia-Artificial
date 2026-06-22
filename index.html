@@ -1,133 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital — Conscientização sobre IA e Deepfakes</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<button onclick="modoEscuro()">🌙 Modo Escuro</button><section>
+    <h2>Detector de Fake News</h2>
 
-    <!-- Barra de Navegação Padrão Google -->
-    <header class="g-header">
-        <div class="g-header-container">
-            <div class="g-brand">
-                <svg class="g-logo-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-                <span class="g-logo-text">Cidadania<span class="g-logo-bold">Digital</span></span>
-            </div>
-            <nav class="g-nav" aria-label="Navegação principal">
-                <a href="#sobre" class="g-nav-link">Visão Geral</a>
-                <a href="#quiz" class="g-nav-link">Simulador</a>
-                <a href="#denuncia" class="g-nav-link">Central de Alertas</a>
-            </nav>
-            <div class="g-actions">
-                <button id="toggle-contrast" class="g-btn-icon" aria-label="Inverter cores para acessibilidade">
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-17.93c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93V4.07z"/></svg>
-                </button>
-            </div>
-        </div>
-    </header>
+    <input type="text" id="noticia"
+    placeholder="Digite uma notícia">
 
-    <main>
-        <!-- Hero Section Estilo Google (Limpo, Direto, Focado em Dados) -->
-        <section id="sobre" class="g-hero">
-            <div class="g-container">
-                <div class="g-hero-badge">Iniciativa Global 2026</div>
-                <h1 class="g-hero-title">O impacto das Deepfakes na sociedade conectada</h1>
-                <p class="g-hero-subtitle">A inteligência artificial mudou a forma como consumimos informação. Desenvolvemos este portal universal para ensinar qualquer cidadão a identificar mídias manipuladas e proteger a verdade digital.</p>
-                <div class="g-tag-wrapper">
-                    <span class="g-hashtag">#cidadaniadigital2026</span>
-                </div>
-            </div>
-        </section>
+    <button onclick="analisar()">
+        Analisar
+    </button>
 
-        <!-- Seção Simulador (Padrão Google Cards) -->
-        <section id="quiz" class="g-section g-bg-light">
-            <div class="g-container">
-                <div class="g-section-header">
-                    <h2 class="g-section-title">Laboratório de Análise de Mídia</h2>
-                    <p class="g-section-subtitle">Aprenda a detectar anomalias digitais testando sua percepção em cenários reais de engenharia social.</p>
-                </div>
+    <p id="resultado"></p>
+</section><section>
+<h2>Galeria</h2>
 
-                <div class="g-card">
-                    <div class="g-card-body">
-                        <span class="g-card-badge">Cenário Técnico de Estudo</span>
-                        <h3 class="g-card-question">Você recebe um vídeo de um portal de notícias onde o rosto de uma autoridade oscila sutilmente nas bordas durante movimentos bruscos, e o áudio possui pequenas pausas artificiais entre as palavras. Qual é o diagnóstico?</h3>
-                        
-                        <div class="g-options-list">
-                            <label class="g-option-card">
-                                <input type="radio" name="g-quiz" value="real" class="g-radio-input">
-                                <span class="g-radio-label">Mídia Autêntica. As falhas ocorrem devido à baixa qualidade da captação ou instabilidade no sinal da sua conexão de internet.</span>
-                            </label>
-                            <label class="g-option-card">
-                                <input type="radio" name="g-quiz" value="fake" class="g-radio-input">
-                                <span class="g-radio-label">Evidência de Deepfake. Artefatos de pixels nas bordas e falta de modulação natural na voz são assinaturas comuns de síntese por IA.</span>
-                            </label>
-                        </div>
+<div class="galeria">
+<img src="imagens/ia.jpg">
+<img src="imagens/deepfake.jpg">
+<img src="imagens/fake-news.jpg">
+</div>
 
-                        <div class="g-card-actions">
-                            <button id="btn-verify" class="g-btn-primary">Analisar resposta</button>
-                        </div>
-
-                        <!-- Feedback Dinâmico Inteligente -->
-                        <div id="quiz-feedback" class="g-feedback hidden" role="alert">
-                            <div class="g-feedback-content">
-                                <p id="feedback-text"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Central de Alertas (Formulário Semântico de Alta Escala) -->
-        <section id="denuncia" class="g-section">
-            <div class="g-container">
-                <div class="g-section-header">
-                    <h2 class="g-section-title">Central Comunitária de Alertas</h2>
-                    <p class="g-section-subtitle">Encontrou um conteúdo suspeito circulando? Colabore com a base de dados enviando o link para triagem automatizada.</p>
-                </div>
-
-                <form id="report-form" class="g-form">
-                    <div class="g-form-field">
-                        <label for="user-name" class="g-label">Seu nome completo</label>
-                        <input type="text" id="user-name" class="g-input" placeholder="Ex: Lucas Mendes" required>
-                    </div>
-
-                    <div class="g-form-field">
-                        <label for="media-url" class="g-label">Endereço eletrônico do conteúdo (URL)</label>
-                        <input type="url" id="media-url" class="g-input" placeholder="https://exemplo.com" required>
-                    </div>
-
-                    <div class="g-form-field">
-                        <label for="observation" class="g-label">O que chamou sua atenção no vídeo?</label>
-                        <textarea id="observation" class="g-textarea" rows="4" placeholder="Ex: Os movimentos dos lábios estão desalinhados com a fala..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="g-btn-primary">Registrar Alerta</button>
-                </form>
-
-                <!-- Toast de Confirmação Reativo -->
-                <div id="form-success" class="g-toast hidden" role="status">
-                    <svg viewBox="0 0 24 24" width="20" height="20" class="g-toast-icon"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    <p>Alerta enviado com sucesso. Conteúdos analisados nesta sessão: <span id="counter-value">0</span></p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Rodapé Limpo Padrão Corporativo -->
-    <footer class="g-footer">
-        <div class="g-footer-container">
-            <p class="g-footer-copy">&copy; 2026 Cidadania Digital. Desenvolvido sob princípios universais de acessibilidade e código 100% autoral.</p>
-            <div class="g-footer-links">
-                <span class="g-footer-credit">Tecnologias: HTML5 Semântico • CSS Flexbox • Vanilla JS</span>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-</body>
-</html>
+</section>
