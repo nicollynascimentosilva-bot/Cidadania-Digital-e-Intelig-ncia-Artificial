@@ -21,7 +21,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding-bottom: 80px;
+    padding-bottom: 100px; /* Aumentado para o rodapé não cobrir o conteúdo */
 }
 
 /* --- CABEÇALHO --- */
@@ -122,22 +122,25 @@ li::before {
     cursor: not-allowed;
 }
 
-.correct {
-    border-color: var(--success) !important;
-    background-color: rgba(46, 164, 79, 0.1) !important;
-    color: #56d364 !important;
-}
-
-.incorrect {
-    border-color: var(--danger) !important;
-    background-color: rgba(218, 54, 55, 0.1) !important;
-    color: #f85149 !important;
-}
-
-#quiz-feedback {
+/* CORREÇÃO: Nome das classes atualizado para sincronizar com o JS */
+.feedback-success {
     margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
     font-weight: bold;
-    min-height: 24px;
+    border: 1px solid var(--success);
+    background-color: rgba(46, 164, 79, 0.1);
+    color: #56d364;
+}
+
+.feedback-error {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: 1px solid var(--danger);
+    background-color: rgba(218, 54, 55, 0.1);
+    color: #f85149;
 }
 
 /* --- RODAPÉ --- */
@@ -150,12 +153,14 @@ footer {
     background-color: var(--bg-color);
     position: fixed;
     bottom: 0;
+    left: 0;   /* Adicionado para garantir alinhamento */
     width: 100%;
+    z-index: 10; /* Garante que fique sempre acima do conteúdo */
 }
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 600px) {
     header h1 { font-size: 1.6rem; }
     section { padding: 15px; }
-    body { padding-bottom: 100px; }
+    body { padding-bottom: 120px; }
 }
