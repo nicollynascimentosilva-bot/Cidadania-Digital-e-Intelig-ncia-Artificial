@@ -15,7 +15,7 @@
     <nav>
         <a href="#conceito">Conceito</a>
         <a href="#impactos">Impactos</a>
-        <a href="#jogo">Desafio Fake vs Fato</a>
+        <a href="#jogo">Jogo das Imagens</a>
         <a href="#prevencao">Como se Proteger</a>
     </nav>
 
@@ -29,7 +29,6 @@
                     <p>Ferramentas de IA agora permitem a criação de <em>deepfakes</em> — vídeos, áudios ou imagens hiper-realistas que imitam pessoas reais dizendo ou fazendo coisas que nunca aconteceram.</p>
                 </div>
                 <div class="img-block">
-                    <!-- Imagem conceitual sobre conexões digitais e IA -->
                     <img src="https://unsplash.com" alt="Abstrato de Inteligência Artificial">
                 </div>
             </div>
@@ -47,24 +46,30 @@
             </ul>
         </section>
 
-        <!-- Seção Jogo / Quiz Interativo -->
+        <!-- Seção Jogo / Quiz Visual Interativo -->
         <section id="jogo" class="card game-section">
-            <h2>🎮 Jogo: Desafio Fake ou Fato?</h2>
-            <p>Treine seus olhos e sua mente crítica. Analise as situações abaixo e decida se o conteúdo é real ou fruto de manipulação!</p>
+            <h2>🎮 Detetive IA: O Jogo das Imagens</h2>
+            <p>Analise a imagem exibida com muita atenção. Olhe os detalhes, rostos e fundos. Ela é real ou foi gerada por uma Inteligência Artificial?</p>
             
             <div id="quiz-container">
-                <div id="question-box">
-                    <p id="question-text">Carregando pergunta...</p>
+                <!-- Caixa da Imagem do Jogo -->
+                <div class="game-image-box">
+                    <img id="game-image" src="" alt="Imagem do Desafio">
                 </div>
+
+                <div id="question-box">
+                    <p id="question-text">Carregando contexto da imagem...</p>
+                </div>
+
                 <div class="game-buttons">
-                    <button class="btn btn-fake" onclick="checkAnswer(true)">É Fake! ❌</button>
-                    <button class="btn btn-fact" onclick="checkAnswer(false)">É Fato!  </button>
+                    <button class="btn btn-fake" onclick="checkAnswer(true)">❌ É Fake! (Gerada por IA)</button>
+                    <button class="btn btn-fact" onclick="checkAnswer(false)">✅ É Fato! (Foto Real)</button>
                 </div>
                 <div id="feedback" class="hidden"></div>
             </div>
             
             <div id="score-box" class="hidden">
-                <h3>Fim do Desafio!</h3>
+                <h3>🏆 Fim do Desafio!</h3>
                 <p id="score-text"></p>
                 <button class="btn-restart" onclick="restartGame()">Jogar Novamente</button>
             </div>
@@ -79,12 +84,11 @@
                     <ol>
                         <li><strong>Desconfie do imediato:</strong> Notícias alarmantes ou vídeos absurdos exigem cautela secundária.</li>
                         <li><strong>Cheque as fontes:</strong> Busque o mesmo fato em portais jornalísticos consolidados.</li>
-                        <li><strong>Analise os detalhes:</strong> Em deepfakes, observe piscadas não naturais, falhas na iluminação ou áudio dessincronizado.</li>
+                        <li><strong>Analise os detalhes:</strong> Em imagens de IA, observe dentes estranhos, mãos com 6 dedos ou fundos distorcidos.</li>
                         <li><strong>Não compartilhe na dúvida:</strong> Quebre o ciclo de propagação do vírus da mentira.</li>
                     </ol>
                 </div>
                 <div class="img-block">
-                    <!-- Imagem simbolizando verificação de dados e segurança -->
                     <img src="https://unsplash.com" alt="Segurança Digital e Análise de Dados">
                 </div>
             </div>
