@@ -3,155 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital: O Impacto das Deepfakes e IA</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Consciência Digital - IA e Deepfakes 2026</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- ACESSIBILIDADE: LINK SEGREDO -->
-    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
-
-    <!-- CABEÇALHO HERO -->
-    <header>
+    <!-- Cabeçalho Principal com Acessibilidade -->
+    <header class="main-header">
         <div class="header-container">
-            <span class="badge">Projeto Escolar 2026</span>
-            <h1>Cidadania Digital & Inteligência Artificial</h1>
-            <p>O Impacto das Deepfakes e da Desinformação Automatizada na Sociedade</p>
+            <div class="logo">
+                <span>Cidadania</span><span class="highlight">Digital</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#sobre">Desafio</a>
+                <a href="#quiz">Simulador</a>
+                <a href="#denuncia">Canais</a>
+            </nav>
+            <div class="accessibility-control">
+                <button id="toggle-contrast" aria-label="Alternar alto contraste" class="btn-accessibility">A+</button>
+            </div>
         </div>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main id="conteudo-principal" class="container">
-
-        <!-- GRID DE INFORMAÇÕES DEEPFAKE -->
-        <div class="grid-layout">
-            <!-- SEÇÃO 1 -->
-            <section class="card">
-                <div class="card-header">
-                    <svg viewBox="0 0 24 24" class="icon"><path d="M12 2A10 10 0 0 0 2 12c0 5.52.48 10 10 10s10-4.48 10-10A10 10 0 0 0 12 2zm1 16h-2v-2h2zm0-4h-2V7h2z"/></svg>
-                    <h2>O que são Deepfakes?</h2>
-                </div>
-                <p class="section-desc">Deepfakes são vídeos, áudios ou imagens gerados ou modificados de forma ultra-realista por meio de Inteligência Artificial profunda (<em>Deep Learning</em>). Elas conseguem clonar vozes e trocar rostos de forma quase idêntica à realidade.</p>
-                <ul class="styled-list">
-                    <li>Clonagem de voz em tempo real para golpes.</li>
-                    <li>Substituição de rostos em vídeos existentes (Face Swap).</li>
-                    <li>Criação de falsos discursos de líderes mundiais.</li>
-                </ul>
-            </section>
-
-            <!-- SEÇÃO 2 -->
-            <section class="card">
-                <div class="card-header">
-                    <svg viewBox="0 0 24 24" class="icon"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <h2>Como Identificar Anomalias</h2>
-                </div>
-                <p class="section-desc">Embora os algoritmos de IA evoluam rapidamente, a maioria das mídias manipuladas ainda deixa rastros físicos e digitais imperfeitos:</p>
-                <ul class="styled-list">
-                    <li>Piscadas de olhos ausentes, robóticas ou excessivas.</li>
-                    <li>Sincronia labial sutilmente desalinhada com o áudio.</li>
-                    <li>Iluminação fixa, sombras inconsistentes ou falta de brilho na íris.</li>
-                    <li>Bordas levemente borradas ao redor do pescoço ou cabelo.</li>
-                </ul>
-            </section>
-        </div>
-
-        <!-- SEÇÃO 3: IMPACTOS -->
-        <section class="card">
-            <div class="card-header">
-                <svg viewBox="0 0 24 24" class="icon"><path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/></svg>
-                <h2>Os Perigos da Desinformação Automatizada</h2>
-            </div>
-            <p class="section-desc">A Inteligência Artificial reduziu drasticamente o custo e o tempo necessários para criar notícias falsas em massa. Os principais riscos incluem:</p>
-            <div class="impact-grid">
-                <div class="impact-item">
-                    <h3>Fraudes e Golpes</h3>
-                    <p>Uso de áudios sintéticos de familiares simulando sequestros ou pedidos de dinheiro urgente.</p>
-                </div>
-                <div class="impact-item">
-                    <h3>Manipulação Política</h3>
-                    <p>Disseminação de falsas declarações nas vésperas de votações para desestabilizar processos democráticos.</p>
-                </div>
-                <div class="impact-item">
-                    <h3>Danos Reputacionais</h3>
-                    <p>Destruição instantânea da credibilidade de estudantes, professores ou figuras públicas com montagens.</p>
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Hero Section: Impacto e Contexto -->
+        <section id="sobre" class="hero-section">
+            <div class="section-container">
+                <h1>O Impacto das Deepfakes e da Desinformação na Sociedade</h1>
+                <p>A inteligência artificial transformou a criação de mídia. Aprender a diferenciar o real do manipulado é o primeiro passo para exercer sua cidadania digital com segurança.</p>
+                <div class="badge-container">
+                    <span class="badge">#cidadaniadigital2026</span>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 4: BOAS PRÁTICAS -->
-        <section class="card highlight-card">
-            <div class="card-header">
-                <svg viewBox="0 0 24 24" class="icon"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                <h2>Guia de Sobrevivência Digital</h2>
-            </div>
-            <ul class="styled-list security-list">
-                <li><strong>Duvide do Alarmismo:</strong> Desconfie de mídias que geram respostas emocionais fortes, como raiva ou medo urgente.</li>
-                <li><strong>Rastreie a Origem:</strong> Busque o mesmo conteúdo em canais de imprensa profissionais ou agências de checagem.</li>
-                <li><strong>Analise os Metadados e URL:</strong> Sites que espalham fraudes costumam clonar o layout de portais reais mudando apenas letras no domínio.</li>
-                <li><strong>Não seja um vetor:</strong> Na dúvida, interrompa a corrente de compartilhamento imediatamente.</li>
-            </ul>
-        </section>
+        <!-- Seção Interativa: Quiz Anti-Desinformação -->
+        <section id="quiz" class="quiz-section">
+            <div class="section-container">
+                <h2>Simulador de Análise de Mídia</h2>
+                <p class="section-subtitle">Você consegue detectar uma deepfake? Faça o teste abaixo baseado em casos reais de análise computacional.</p>
+                
+                <div class="quiz-card">
+                    <div class="quiz-header">
+                        <span class="step-indicator">Análise de Caso 1 de 1</span>
+                        <h3 id="quiz-question">Um vídeo mostra um líder político declarando estado de emergência. A iluminação de fundo muda sutilmente, e as bordas do rosto piscam levemente quando ele se move rápido. O que isso indica?</h3>
+                    </div>
 
-        <!-- SEÇÃO 5: INTERATIVIDADE (QUIZ SEGURO) -->
-        <section class="card quiz-section">
-            <div class="card-header">
-                <svg viewBox="0 0 24 24" class="icon"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                <h2>Desafio de Cidadania Digital</h2>
-            </div>
-            <p class="section-desc">Analise os cenários hipotéticos reais e veja se você está imune aos novos golpes digitais:</p>
-            
-            <!-- Pergunta 1 -->
-            <div class="quiz-block" data-question="1">
-                <p class="quiz-question">1. Um perfil oficial de um colega envia um link com um vídeo curto dele pedindo ajuda financeira com voz meio travada. O que fazer?</p>
-                <div class="quiz-container">
-                    <button class="quiz-option" data-correct="false">Fazer a transferência via PIX rápido para evitar problemas maiores.</button>
-                    <button class="quiz-option" data-correct="true">Ligar para o colega por chamada convencional ou validar por outro canal de comunicação.</button>
-                    <button class="quiz-option" data-correct="false">Compartilhar o link no grupo da sala perguntando se alguém sabe se é real.</button>
+                    <div class="quiz-options">
+                        <label class="option-label">
+                            <input type="radio" name="quiz-answer" value="real">
+                            <span class="custom-radio"></span>
+                            Visual autêntico. Apenas oscilação normal da compressão da câmera de celular.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="quiz-answer" value="fake">
+                            <span class="custom-radio"></span>
+                            Artefatos de IA. Inconsistências de iluminação em bordas são falhas comuns de renderização de Deepfakes.
+                        </label>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button id="btn-verify" class="btn-primary">Verificar Resposta</button>
+                    </div>
+
+                    <!-- Feedback Dinâmico (Controlado via JS) -->
+                    <div id="quiz-feedback" class="feedback-box hidden">
+                        <p id="feedback-text"></p>
+                    </div>
                 </div>
-                <div class="quiz-feedback"></div>
             </div>
+        </section>
 
-            <!-- Pergunta 2 -->
-            <div class="quiz-block" data-question="2">
-                <p class="quiz-question">2. Você visualiza um vídeo onde o diretor da sua escola faz declarações absurdas. Ao olhar de perto, o fundo treme levemente. Como proceder?</p>
-                <div class="quiz-container">
-                    <button class="quiz-option" data-correct="true">Tratar como possível deepfake e consultar a coordenação pedagógica da instituição antes de passar adiante.</button>
-                    <button class="quiz-option" data-correct="false">Enviar imediatamente nos grupos de WhatsApp dos pais como denúncia urgente.</button>
-                    <button class="quiz-option" data-correct="false">Ignorar totalmente o fato, pois o problema não envolve suas notas ou histórico.</button>
+        <!-- Seção de Formulário Semântico: Denúncia/Engajamento -->
+        <section id="denuncia" class="form-section">
+            <div class="section-container">
+                <h2>Central de Alerta Comunitário</h2>
+                <p class="section-subtitle">Detectou um link suspeito ou vídeo manipulado circulando nos grupos escolares? Relate para verificação interna.</p>
+                
+                <form id="report-form" class="custom-form">
+                    <div class="form-group">
+                        <label for="user-name">Nome Completo</label>
+                        <input type="text" id="user-name" name="userName" placeholder="Ex: Maria Silva" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="media-url">Link da Mídia Suspeita</label>
+                        <input type="url" id="media-url" name="mediaUrl" placeholder="https://exemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observation">Sinais de Manipulação Observados</label>
+                        <textarea id="observation" name="observation" rows="4" placeholder="Ex: Áudio dessincronizado dos lábios, movimentos robóticos..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Alerta</button>
+                </form>
+
+                <!-- Feedback do Formulário -->
+                <div id="form-success" class="success-toast hidden">
+                    <p> Alerta registrado com sucesso! Total de relatórios enviados nesta sessão: <span id="counter-value">0</span></p>
                 </div>
-                <div class="quiz-feedback"></div>
-            </div>
-
-            <!-- Painel de Resultados Acumulados -->
-            <div id="quiz-score-panel" class="score-panel hidden">
-                <p>📊 Seu desempenho final: <span id="score-value">0</span> de 2 acertos.</p>
             </div>
         </section>
-
-        <!-- SEÇÃO 6: CRÉDITOS E AGÊNCIAS -->
-        <section class="card tools-section">
-            <div class="card-header">
-                <svg viewBox="0 0 24 24" class="icon"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-                <h2>Canais de Checagem Recomendados</h2>
-            </div>
-            <p class="section-desc">Desenvolva o hábito de auditar o que recebe nos portais oficiais de checagem do Brasil:</p>
-            <ul class="styled-list checking-channels">
-                <li><a href="https://globo.com" target="_blank" rel="noopener">Fato ou Fake — Monitoramento do Portal G1</a></li>
-                <li><a href="https://aosfatos.org" target="_blank" rel="noopener">Aos Fatos — Jornalismo focado em checagem de fatos</a></li>
-                <li><a href="https://lupa.news" target="_blank" rel="noopener">Agência Lupa — Primeira agência de fact-checking do Brasil</a></li>
-            </ul>
-        </section>
-
     </main>
 
-    <!-- RODAPÉ COMPACTO -->
-    <footer>
-        <div class="footer-content">
-            <p>Atividade Pedagógica 2026 • Foco em Segurança da Informação</p>
-            <p class="footer-tag">Hashtag de Validação: <code>#cidadaniadigital2026</code></p>
+    <!-- Rodapé Proprietário com Créditos Autorais -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Portal Cidadania Digital. Conteúdo 100% autoral produzido para fins educacionais comunitários.</p>
+            <p class="credits">Código e mídias vetoriais CSS customizados pelos estudantes criadores.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
