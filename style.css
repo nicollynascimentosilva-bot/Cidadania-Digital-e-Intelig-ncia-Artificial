@@ -21,7 +21,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding-bottom: 100px; /* Aumentado para o rodapé não cobrir o conteúdo */
+    padding-bottom: 100px;
 }
 
 /* --- CABEÇALHO --- */
@@ -91,12 +91,43 @@ li::before {
     top: -4px;
 }
 
+/* Links de Recursos */
+.font-links li::before {
+    content: "🔗";
+    font-size: 1rem;
+    top: 2px;
+}
+
+.font-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.2s;
+}
+
+.font-links a:hover {
+    text-decoration: underline;
+}
+
 /* --- INTERATIVIDADE: QUIZ --- */
-.quiz-container {
+.quiz-block {
     background-color: #1f242c;
     border-radius: 6px;
     padding: 20px;
-    margin-top: 15px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.quiz-question {
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .quiz-option {
@@ -104,7 +135,6 @@ li::before {
     border: 1px solid var(--border-color);
     color: var(--text-color);
     padding: 12px;
-    margin: 8px 0;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -120,9 +150,22 @@ li::before {
 
 .quiz-option:disabled {
     cursor: not-allowed;
+    opacity: 0.6;
 }
 
-/* CORREÇÃO: Nome das classes atualizado para sincronizar com o JS */
+/* Estados Dinâmicos do Quiz */
+.quiz-option.correct-choice {
+    border-color: var(--success) !important;
+    background-color: rgba(46, 164, 79, 0.1) !important;
+    color: #56d364 !important;
+}
+
+.quiz-option.incorrect-choice {
+    border-color: var(--danger) !important;
+    background-color: rgba(218, 54, 55, 0.1) !important;
+    color: #f85149 !important;
+}
+
 .feedback-success {
     margin-top: 15px;
     padding: 12px;
@@ -153,9 +196,9 @@ footer {
     background-color: var(--bg-color);
     position: fixed;
     bottom: 0;
-    left: 0;   /* Adicionado para garantir alinhamento */
+    left: 0;
     width: 100%;
-    z-index: 10; /* Garante que fique sempre acima do conteúdo */
+    z-index: 10;
 }
 
 /* --- RESPONSIVIDADE --- */
